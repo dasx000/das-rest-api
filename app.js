@@ -6,7 +6,7 @@ const port = process.env.PORT || 8000;
 das.use(express.json());
 das.use(express.urlencoded({ extended: true }));
 
-// connect to database
+// connect to database mongodb
 const db = require('./app/models/');
 db.mongoose
   .connect(db.url, {
