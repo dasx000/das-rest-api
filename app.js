@@ -28,9 +28,10 @@ das.get('/', (req, res) => {
 
 // menghubungkan router students
 require('./app/routes/student.route')(das);
+require('./app/routes/tool.route')(das);
 
 // LISTEN
 
 das.listen(port, () => {
-  console.log(`Server started on port http://localhost:${port}`);
+  console.log(`Server started on PORT ${port}`);
 });

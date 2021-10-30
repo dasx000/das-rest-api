@@ -4,9 +4,11 @@ module.exports = (das) => {
 
   router.get('/', students.findAll);
   router.post('/', students.create);
-  router.get('/:id', students.findById);
+
   router.put('/:id', students.update);
   router.delete('/:id', students.delete);
+  router.get('/search', students.search);
+  router.get('/id/:id', students.findById);
 
   das.use('/api/students', router);
 };

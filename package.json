@@ -16,8 +16,11 @@
   "author": "dasx000",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "mongoose": "^6.0.12"
   }
 }

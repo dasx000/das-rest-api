@@ -100,3 +100,35 @@ exports.delete = (req, res) => {
       console.log(err.message);
     });
 };
+
+exports.search = (req, res) => {
+  const apikeyInput = req.query.apikey;
+  if (!apikeyInput)
+    return res.status(403).send(fail(403, 'please enter the apikey!'));
+  if (apikeyInput != 'diky')
+    return res.status(406).send(fail(406, 'Apikey Invalid!'));
+
+  const nama = req.query.q;
+  Student.find({ nama: `${nama.toUpperCase()}` })
+    .then((result) => {
+      if (result == '') {
+        Student.find({ npm: `${nama}` })
+          .then((result) => {
+            if (result == '') {
+              res.status(404).send(fail(404, 'Not Found!'));
+            } else {
+              res.send(data(result));
+            }
+          })
+          .catch((err) => {
+            res.status(500).send(fail(500, 'Some Error While find Students!'));
+          });
+      } else {
+        res.send(data(result));
+      }
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res.status(500).send(fail(500, 'Some Error While find Students!'));
+    });
+};
