@@ -102,7 +102,7 @@ exports.ytMP4 = async (req, res) => {
       );
     })
     .catch((err) => {
-      res.status(406).send(fail(406, 'error'));
+      res.status(406).send(fail(406, 'error ytmp4'));
     });
 };
 
