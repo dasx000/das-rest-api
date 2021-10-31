@@ -28,7 +28,7 @@ exports.short_url = async (req, res) => {
 };
 
 exports.ytMP3 = async (req, res) => {
-  const url = req.query.link;
+  const url = req.query.url;
   await ytMp3(url)
     .then((results) => {
       const {
@@ -66,7 +66,7 @@ exports.ytMP3 = async (req, res) => {
     });
 };
 exports.ytMP4 = async (req, res) => {
-  const url = req.query.link;
+  const url = req.query.url;
   await ytMp4(url)
     .then((results) => {
       const {
