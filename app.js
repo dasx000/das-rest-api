@@ -26,9 +26,10 @@ das.get('/', (req, res) => {
   res.json({ message: `Welcome To My Rest Api` });
 });
 
-// menghubungkan router students
-require('./app/routes/student.route')(das);
+// menghubungkan router
 require('./app/routes/tool.route')(das);
+require('./app/routes/student.route')(das);
+require('./app/routes/islam.route')(das);
 
 // LISTEN
 
