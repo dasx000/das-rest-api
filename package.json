@@ -21,6 +21,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "mongoose": "^6.0.12"
+    "mongoose": "^6.0.12",
+    "yt-search": "^2.10.2",
+    "ytdl-core": "^4.9.1"
   }
 }
