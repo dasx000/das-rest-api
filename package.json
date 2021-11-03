@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "keywords": [
     "rest",
@@ -17,10 +17,15 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
+    "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.10",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
     "mongoose": "^6.0.12",
     "yt-search": "^2.10.2",
     "ytdl-core": "^4.9.1"
