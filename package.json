@@ -27,6 +27,7 @@
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "mongoose": "^6.0.12",
+    "nodemon": "^2.0.14",
     "yt-search": "^2.10.2",
     "ytdl-core": "^4.9.1"
   }
