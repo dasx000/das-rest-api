@@ -11,4 +11,12 @@
   .text-sm {
     font-size: 10px;
   }
+  .register-area {
+    margin: 10px;
+    padding: 10px;
+  }
+  .login-area {
+    margin: 10px;
+    padding: 10px;
+  }
 }
