@@ -1,0 +1,66 @@
+<center>
+  <%- include('../layouts/msg') %> <%- include('../layouts/errors') %>
+</center>
+
+<form
+  action="/api/admin/save_edit_user?_method=PUT"
+  method="POST"
+  class="d-inline"
+>
+  <!-- id -->
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      name="email"
+      value="<%= userTarget.email %>"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="userName" class="form-label">Username</label>
+    <input
+      name="userName"
+      type="text"
+      class="form-control"
+      value="<%= userTarget.userName %>"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="fullName" class="form-label">Full Name</label>
+    <input
+      type="text"
+      name="fullName"
+      class="form-control"
+      value="<%= userTarget.fullName %>"
+    />
+  </div>
+  <input type="hidden" name="id" value="<%= userTarget.id %>" />
+  <div class="mb-3">
+    <label for="role" class="form-label">Role</label>
+    <input
+      type="text"
+      name="role"
+      type="number"
+      id="disabledInput"
+      class="form-control"
+      value="<%=userTarget.role%>"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="apikey" class="form-label">Apikey</label>
+    <input
+      type="text"
+      name="apikey"
+      id="disabledInput"
+      class="form-control"
+      value="<%= userTarget.apikey %>"
+    />
+  </div>
+  <!-- <a href=""> -->
+  <button type="submit" class="btn btn-primary">Save</button>
+  <!-- </a> -->
+</form>

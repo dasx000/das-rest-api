@@ -59,3 +59,14 @@ exports.login = (req, res) => {
       });
   });
 };
+
+exports.findAll = (req, res) => {
+  Users.find()
+    .then((result) => {
+      res.send(data(result));
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res.status(500).send(fail(500, 'Some Error While Retrieving user!'));
+    });
+};

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Mazer Admin Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="/assets/vendors/bootstrap-icons/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="/style/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/app.css" />
+    <link rel="stylesheet" href="/assets/css/pages/auth.css" />
+  </head>
+
+  <body>
+    <div id="auth">
+      <div class="row">
+        <div class="container">
+          <div class="col-lg-5 mx-auto">
+            <div id="auth-left" class="login-area">
+              <%- include('layouts/msg') %> <%- include('layouts/errors') %>
+              <h1 class="auth-title">Sign Up</h1>
+              <p class="auth-subtitle mb-3">
+                Input your data to register to our website.
+              </p>
+
+              <form action="/auth/register" method="post">
+                <div class="form-group position-relative has-icon-left mb-4">
+                  <input
+                    name="email"
+                    type="email"
+                    class="form-control form-control-xl"
+                    placeholder="Email"
+                  />
+                  <div class="form-control-icon">
+                    <i class="bi bi-envelope"></i>
+                  </div>
+                </div>
+                <!-- <div class="form-group position-relative has-icon-left mb-4">
+                <input
+                  name="userName"
+                  type="text"
+                  class="form-control form-control-xl"
+                  placeholder="Username"
+                />
+                <div class="form-control-icon">
+                  <i class="bi bi-person"></i>
+                </div>
+              </div> -->
+                <!-- <div class="form-group position-relative has-icon-left mb-4">
+                <input
+                  name="fullName"
+                  type="text"
+                  class="form-control form-control-xl"
+                  placeholder="Full Name"
+                />
+                <div class="form-control-icon">
+                  <i class="bi bi-person"></i>
+                </div>
+              </div> -->
+                <div class="form-group position-relative has-icon-left mb-4">
+                  <input
+                    name="password"
+                    type="password"
+                    class="form-control form-control-xl"
+                    placeholder="Password"
+                  />
+                  <div class="form-control-icon">
+                    <i class="bi bi-shield-lock"></i>
+                  </div>
+                </div>
+                <div class="form-group position-relative has-icon-left mb-4">
+                  <input
+                    name="confirmPassword"
+                    type="password"
+                    class="form-control form-control-xl"
+                    placeholder="Confirm Password"
+                  />
+                  <!-- <div class="form-control-icon">
+                  <i class="bi bi-shield-lock"></i>
+                </div> -->
+                  <br />
+                  <div><%- recaptcha %></div>
+                </div>
+                <button
+                  class="btn btn-primary btn-block btn-lg shadow-lg mt-3"
+                  href="/auth/login"
+                >
+                  Sign Up
+                </button>
+              </form>
+              <div class="text-center mt-3 text-lg fs-4">
+                <p class="text-gray-600">
+                  Already have an account?
+                  <a href="login" class="font-bold">Log in</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

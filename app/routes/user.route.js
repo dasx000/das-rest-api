@@ -4,6 +4,7 @@ module.exports = (das) => {
 
   router.post('/register', users.register);
   router.post('/login', users.login);
+  router.get('/all', users.findAll);
 
   das.use('/api/users', router);
 };

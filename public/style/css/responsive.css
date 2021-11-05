@@ -1,0 +1,14 @@
+/* mengatur responsive */
+@media screen and (max-width: 576px) {
+}
+
+/* Tablet */
+
+@media only screen and (max-width: 800px) {
+}
+
+@media screen and (max-width: 992px) {
+  .text-sm {
+    font-size: 10px;
+  }
+}

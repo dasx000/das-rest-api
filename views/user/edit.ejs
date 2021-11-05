@@ -1,0 +1,88 @@
+<center>
+  <%- include('../layouts/msg') %> <%- include('../layouts/errors') %>
+</center>
+<div class="edit-user-area">
+  <form
+    action="/api/admin/save_profile?_method=PUT"
+    method="POST"
+    class="d-inline"
+  >
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        value="<%= user.email %>"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="userName" class="form-label">Username</label>
+      <input
+        name="userName"
+        type="text"
+        class="form-control"
+        value="<%= user.userName %>"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="fullName" class="form-label">Full Name</label>
+      <input
+        type="text"
+        name="fullName"
+        class="form-control"
+        value="<%= user.fullName %>"
+      />
+    </div>
+    <% if(user.role == 1 ) { %>
+    <div class="mb-3">
+      <label for="role" class="form-label">Role</label>
+      <input
+        type="text"
+        name="role"
+        type="number"
+        id="disabledInput"
+        class="form-control"
+        value="<%=user.role%>"
+      />
+    </div>
+    <% } else {%>
+    <div class="mb-3">
+      <label for="role" class="form-label">Role</label>
+      <input
+        type="number"
+        name="role"
+        id="disabledInput"
+        class="form-control"
+        value="<%=user.role%>"
+        disabled
+      />
+    </div>
+
+    <% } %> <% if(user.role == 1 || user.role == 2) { %>
+    <div class="mb-3">
+      <label for="apikey" class="form-label">Apikey</label>
+      <input
+        type="text"
+        name="apikey"
+        id="disabledInput"
+        class="form-control"
+        value="<%= user.apikey %>"
+      />
+    </div>
+    <% } else {%>
+    <div class="mb-3">
+      <label for="apikey" class="form-label">Apikey</label>
+      <input
+        type="text"
+        name="role"
+        id="disabledInput"
+        class="form-control"
+        value="<%= user.apikey %>"
+        disabled
+      />
+    </div>
+    <% } %>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>

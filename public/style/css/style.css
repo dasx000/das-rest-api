@@ -1,0 +1,35 @@
+@import './fonts.css';
+@import './partials/variables.css';
+@import './partials/global.css';
+@import './animations.css';
+
+.profile-content {
+  margin: 20px 0;
+}
+.profile-content .isi {
+  /* color: var(--black-400); */
+  color: rgb(145, 145, 145);
+}
+.profile-content .title {
+  color: var(--black-400);
+  margin-top: 15px;
+}
+.login-area {
+  box-shadow: var(--shadow-black-100);
+  /* background-color: turquoise; */
+  border-radius: 5px;
+  margin: 40px auto 30px;
+  padding: 20px;
+}
+
+.login-area p {
+  font-size: 20px;
+}
+.login-area a {
+  font-size: 16px;
+}
+
+.edit-user-area {
+  background-color: white;
+  padding: 15px;
+}
