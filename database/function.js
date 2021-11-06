@@ -1,13 +1,15 @@
 // const { limitCount } = require('../lib/settings');
 const db = require('../app/models/');
 const Users = db.users;
+const photoDefault = 'https://i.ibb.co/bms8TZT/f9a09806a199.png';
 
-async function addUser(email, password, role, apikey) {
+async function addUser(email, password, role, apikey, img = photoDefault) {
   let obj = {
     email,
     password,
     role,
     apikey,
+    img,
   };
   Users.create(obj);
 }

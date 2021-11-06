@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const das = express();
 const expressLayout = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
@@ -6,12 +7,13 @@ const port = process.env.PORT || 8000;
 const cors = require('cors');
 const connectMongoDb = require('./database/connect');
 const methodOverride = require('method-override');
-
+const fileUpload = require('express-fileupload');
 // OTENTIKASI USER
 const passport = require('passport');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const { isAuthenticated } = require('./lib/auth');
+const { sleep } = require('./lib/tools');
 const { getApikey, getRole, findAllUser } = require('./database/function');
 const authRouters = require('./app/routes/auth.route');
 const session = require('express-session');
@@ -24,7 +26,6 @@ das.use(compression());
 das.set('view engine', 'ejs');
 das.use(expressLayout);
 das.use(express.static('public'));
-
 das.use(express.json());
 das.use(express.urlencoded({ extended: true }));
 das.use(cors());
@@ -64,11 +65,21 @@ das.use(function (req, res, next) {
   res.locals.user = req.user || null;
   next();
 });
+das.use(
+  fileUpload({
+    limits: { fileSize: 2 * 1024 * 1024 },
+  })
+);
 
 // == END OTENTIFIKASI USER ==
 
 // connect to database mongodb
 connectMongoDb();
+
+das.get('/upload', (req, res) => {
+  res.render('upload', { layout: false });
+});
+// const express = require('express');
 
 das.get('/', (req, res) => {
   // res.render('login', { layout: false });
@@ -97,6 +108,7 @@ require('./app/routes/student.route')(das);
 require('./app/routes/islam.route')(das);
 require('./app/routes/user.route')(das);
 require('./app/routes/admin.route')(das);
+require('./app/routes/member.route')(das);
 das.use('/auth', authRouters);
 
 // LISTEN

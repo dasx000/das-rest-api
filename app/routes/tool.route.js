@@ -7,6 +7,7 @@ module.exports = (das) => {
   router.get('/ytmp3', tools.ytMP3);
   router.get('/ytmp4', tools.ytMP4);
   router.get('/ytplay', tools.ytPLAY);
+  // router.post('/upload', tools.fileUpload);
 
   das.use('/api/tools', router);
 };

@@ -1,6 +1,21 @@
 <center>
   <%- include('../layouts/msg') %> <%- include('../layouts/errors') %>
 </center>
+<div class="profile-picture">
+  <img src="<%- user.img %>" alt="foto" class="img-fluid" />
+  <form
+    ref="uploadForm"
+    id="uploadForm"
+    action="/api/member/upload_photo"
+    method="post"
+    encType="multipart/form-data"
+    class="form-photo"
+  >
+    <input type="file" name="sampleFile" />
+    <input class="btn btn-2" type="submit" value="Upload!" />
+  </form>
+</div>
+
 <div class="edit-user-area">
   <form
     action="/api/admin/save_profile?_method=PUT"

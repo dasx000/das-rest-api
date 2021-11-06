@@ -47,3 +47,30 @@ html {
   background-color: white;
   padding: 15px;
 }
+
+/* AREA EDIT PROFILE */
+.profile-picture {
+  /* width: 300px;
+  height: 300px; */
+  /* border-radius: 50%; */
+  padding: 5px;
+  margin: 15px 0;
+  background-color: var(--black-000);
+}
+.profile-picture img {
+  border: 1px solid var(--main-color);
+  width: 200px;
+  height: 200px;
+  margin: 3px auto;
+  border-radius: 50%;
+  box-shadow: var(--shadow-black-100);
+}
+.profile-picture img:hover {
+  border: 5px solid var(--main-color);
+}
+
+.form-photo {
+  margin: 20px auto;
+
+  /* background-repeat: no-repeat; */
+}
