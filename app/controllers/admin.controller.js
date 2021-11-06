@@ -33,12 +33,15 @@ exports.deleteUser = (req, res) => {
 };
 
 ///
-exports.saveProfile = (req, res) => {
-  console.log(req.body.role);
+exports.saveProfile = async (req, res) => {
+  console.log(req.body.apikey);
   const id = req.user.id;
-  Users.findByIdAndUpdate(id, req.body)
+  const userName = req.body.userName;
+  req.body.userName = userName.toLowerCase();
+  req.body.apikey = req.body.apikey.replace(' ', '');
+
+  await Users.findByIdAndUpdate(id, req.body)
     .then((result) => {
-      console.log(result);
       req.flash('success_msg', 'Success update data');
       res.redirect('/api/admin/edit_profile');
     })

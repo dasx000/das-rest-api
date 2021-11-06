@@ -3,6 +3,11 @@
 @import './partials/global.css';
 @import './animations.css';
 
+body,
+html {
+  overflow-x: hidden !important;
+  /* overflow-y: hidden !important; */
+}
 .profile-content {
   margin: 20px 0;
 }
@@ -27,7 +32,6 @@
   border-radius: 5px;
   margin: 30px 15px 30px;
   padding: 30px;
-  overflow-x: hidden;
 }
 
 .login-area p,
