@@ -97,3 +97,15 @@ exports.saveEditUser = (req, res) => {
       res.redirect('/api/admin/list_user');
     });
 };
+exports.listStudents = async (req, res) => {
+  try {
+    res.render('admin/students', {
+      user: req.user,
+      users: await findAllUser(),
+      layout: 'layouts/main',
+    });
+  } catch (err) {
+    console.log(err);
+    res.redirect('/api/dashboard');
+  }
+};

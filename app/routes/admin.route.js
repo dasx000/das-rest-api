@@ -24,6 +24,7 @@ module.exports = (das) => {
   );
   router.put('/save_edit_user', admin.saveEditUser);
   router.get('/edit_profile', admin.edit);
+  router.get('/list_students', admin.listStudents);
   router.post('/edit_user', admin.editUser);
 
   das.use('/api/admin', isAuthenticated, router);

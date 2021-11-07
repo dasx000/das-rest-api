@@ -2,7 +2,7 @@ $(document).ready(function () {
   // DataTable
   $('#data-table1').DataTable();
 
-  $('#example').DataTable({
+  $('#students-table').DataTable({
     ajax: '/api/students',
     columns: [
       { data: 'nama' },

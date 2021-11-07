@@ -1,5 +1,15 @@
 /* mengatur responsive */
 @media screen and (max-width: 576px) {
+  .btn {
+    /* padding: 1px !important; */
+    margin: 5px 0;
+    width: 60px;
+    height: 60px;
+    border: none;
+    font-size: 10px;
+    transition: all 0.4s ease;
+    font-weight: 500;
+  }
 }
 
 /* Tablet */
