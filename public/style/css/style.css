@@ -5,8 +5,6 @@
 
 body,
 html {
-  overflow-x: hidden !important;
-  /* overflow-y: hidden !important; */
 }
 .profile-content {
   margin: 20px 0;
