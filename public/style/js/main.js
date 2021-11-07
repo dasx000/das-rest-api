@@ -1,10 +1,10 @@
-$(document).ready(function () {});
-// ========== END JQUERY ================= //
+// const $ = require('jquery');
+// const dt = require('datatables.net')();
 
-// ========== TYPED.JS ================= //
-// var typed2 = new Typed('.home-title', {
-//     strings: ['KASUI'],
-//     typeSpeed: 150,
-//     backSpeed: 100,
-//     loop: true
-// })
+$(document).ready(function () {
+  // DataTable
+  $('#myTable').DataTable({
+    ajax: '/api/students',
+    columns: [{ result: 'no' }, { result: 'nama' }],
+  });
+});
