@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Res API | Diky Adisaputra</title>
+    <title>Rest API | Diky Adisaputra</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -22,6 +22,8 @@
       rel="stylesheet"
       href="/assets/vendors/bootstrap-icons/bootstrap-icons.css"
     />
+
+    <!-- DATA TABLE -->
     <link
       rel="stylesheet"
       type="text/css"
@@ -91,10 +93,47 @@
                 </a>
               </li> -->
 
+              <!-- MENU DOWNLOADER-->
+              <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                  <i class="bi bi-cloud-download"></i>
+                  <span>Downloader</span>
+                </a>
+                <ul class="submenu">
+                  <li class="submenu-item">
+                    <a
+                      href="/api/tools/ytmp4?url=https://youtu.be/JmbvEsPk_Ok"
+                      target="blank"
+                      >YTMP4</a
+                    >
+                  </li>
+                  <li class="submenu-item">
+                    <a
+                      href="/api/tools/ytmp3?url=https://youtu.be/JmbvEsPk_Ok"
+                      target="blank"
+                      >YTMP3</a
+                    >
+                  </li>
+                  <li class="submenu-item">
+                    <a href="/api/tools/ytplay?q=javascript" target="blank"
+                      >YTPLAY</a
+                    >
+                  </li>
+                  <li class="submenu-item">
+                    <a
+                      href="/api/tools/scihub?doi=https://doi.org/10.1016/j.ecolmodel.2018.05.024"
+                      target="blank"
+                      >Scihub</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!-- END MENU DOWNLOADER -->
+
               <!-- MENU ISLAMI -->
               <li class="sidebar-item has-sub">
                 <a href="#" class="sidebar-link">
-                  <i class="bi bi-cloud-moon"></i>
+                  <i class="bi bi-star"></i>
                   <span>Islami</span>
                 </a>
                 <ul class="submenu">
@@ -126,6 +165,25 @@
                   </li>
                 </ul>
               </li>
+              <!-- END MENU ISLAMI -->
+
+              <!-- MENU TOOLS-->
+              <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                  <i class="bi bi-gear"></i>
+                  <span>Tools</span>
+                </a>
+                <ul class="submenu">
+                  <li class="submenu-item">
+                    <a
+                      href="/api/tools/short-url?url=https://doi.org/10.1016/j.ecolmodel.2018.05.024"
+                      target="blank"
+                      >Tinyurl</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!-- END MENU TOOLS -->
             </ul>
           </div>
           <button class="sidebar-toggler btn x">
@@ -263,64 +321,12 @@
                   </div>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header">
-                  <h4>Recent Messages</h4>
-                </div>
-                <div class="card-content pb-4">
-                  <div class="recent-message d-flex px-4 py-3">
-                    <div class="avatar avatar-lg">
-                      <img src="/assets/images/faces/4.jpg" />
-                    </div>
-                    <div class="name ms-4">
-                      <h5 class="mb-1">Hank Schrader</h5>
-                      <h6 class="text-muted mb-0">@johnducky</h6>
-                    </div>
-                  </div>
-                  <div class="recent-message d-flex px-4 py-3">
-                    <div class="avatar avatar-lg">
-                      <img src="/assets/images/faces/5.jpg" />
-                    </div>
-                    <div class="name ms-4">
-                      <h5 class="mb-1">Dean Winchester</h5>
-                      <h6 class="text-muted mb-0">@imdean</h6>
-                    </div>
-                  </div>
-                  <div class="recent-message d-flex px-4 py-3">
-                    <div class="avatar avatar-lg">
-                      <img src="/assets/images/faces/1.jpg" />
-                    </div>
-                    <div class="name ms-4">
-                      <h5 class="mb-1">John Dodol</h5>
-                      <h6 class="text-muted mb-0">@dodoljohn</h6>
-                    </div>
-                  </div>
-                  <div class="px-4">
-                    <button
-                      class="
-                        btn btn-block btn-xl btn-light-primary
-                        font-bold
-                        mt-3
-                      "
-                    >
-                      Start Conversation
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <h4>Visitors Profile</h4>
-                </div>
-                <div class="card-body">
-                  <div id="chart-visitors-profile"></div>
-                </div>
-              </div>
             </div>
           </section>
         </div>
 
         <footer>
+          <hr />
           <div class="footer clearfix mb-0 text-muted">
             <div class="float-start">
               <p>2021 &copy; dasx000</p>
@@ -347,9 +353,6 @@
 
     <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
-
-    <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
-    <script src="/assets/js/pages/dashboard.js"></script>
 
     <script src="/assets/js/mazer.js"></script>
 
