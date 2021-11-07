@@ -4,7 +4,7 @@ const data = (res, mess = `Success`) => {
     Owner: 'DASX000',
     status: true,
     message: mess,
-    result: res,
+    data: res,
   };
   return result;
 };

@@ -1,32 +1,14 @@
 {
-  "Owner": "DASX000",
   "status": 200,
-  "message": "Success",
-  "result": [
+  "data": [
     {
       "no": 999,
       "nama": "RONALDO",
-      "npm": "2114161001",
-      "prodi": "S1-Agronomi",
-      "Tahun_masuk": "20211",
-      "status": "A",
-      "semester": "1",
-      "ipk": "0.00",
-      "sks_lulus": "0",
-      "updatedAt": "2021-10-29T07:24:28.599Z",
-      "id": "617b6a71fe695b17e75f216a"
+      "kelas": "XI RPL 1"
     },
     {
       "no": 3,
-      "nama": "GRISELDA AUFA FREDELLA",
-      "npm": "2114161003",
-      "prodi": "S1-Agronomi",
-      "Tahun_masuk": "20211",
-      "status": "A",
-      "semester": "1",
-      "ipk": "0.00",
-      "sks_lulus": "0",
-      "id": "617b6a71fe695b17e75f216c"
+      "nama": "GRISELDA AUFA FREDELLA"
     }
   ]
 }

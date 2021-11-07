@@ -1,10 +1,86 @@
-<table class="display" id="myTable">
-  <thead>
-    <tr>
-      <!-- <th scope="col">#</th>
-      <th scope="col">First</th> -->
-      <th>Nama</th>
-      <th>NPM</th>
-    </tr>
-  </thead>
-</table>
+<center>
+  <%- include('../layouts/msg') %> <%- include('../layouts/errors') %>
+</center>
+
+<div class="card p-3">
+  <div class="card-header">
+    <h4>List Users</h4>
+  </div>
+
+  <div class="col-12">
+    <table class="display" id="data-table1">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+
+          <th scope="col">Email</th>
+
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 0 ; i< users.length;i++) {%>
+        <tr>
+          <th scope="row"><%= i + 1 %></th>
+
+          <td class="text-sm"><%= users[i].email %></td>
+
+          <td>
+            <form action="/api/admin/edit_user" method="post" class="d-inline">
+              <input type="hidden" name="id" value="<%- users[i].id %>" />
+              <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+            <form
+              action="/api/admin/list_user/delete?_method=DELETE"
+              method="POST"
+              class="d-inline"
+            >
+              <input type="hidden" name="id" value="<%- users[i].id %>" />
+
+              <button
+                type="submit"
+                class="btn btn-danger"
+                onclick="return confirm('Yakin ingin menghapus?')"
+              >
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+        <% }%>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="card p-3 my-5">
+  <div class="card-header">
+    <h4>List Users</h4>
+  </div>
+
+  <table id="example" class="display" style="width: 100%">
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>NPM</th>
+        <th>Prodi</th>
+        <th>Tahun Masuk</th>
+        <th>Status</th>
+        <th>Semester</th>
+        <th>IPK</th>
+        <th>SKS Lulus</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>Nama</th>
+        <th>NPM</th>
+        <th>Prodi</th>
+        <th>Tahun Masuk</th>
+        <th>Status</th>
+        <th>Semester</th>
+        <th>IPK</th>
+        <th>SKS Lulus</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
