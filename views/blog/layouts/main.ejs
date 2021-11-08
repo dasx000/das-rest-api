@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | Mahadi Hasan</title>
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- google font -->
+    <!-- CSS -->
+    <!-- BOOTSTRAP 5 -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="/assets/vendors/bootstrap-icons/bootstrap-icons.css"
+    />
+    <!-- END BOOTSTRAP 5 -->
+    <link rel="stylesheet" href="/blog/css/vendor/all.min.css" />
+    <!-- css carousel -->
+    <link
+      rel="stylesheet"
+      href="/style/vendor/owl-carousel/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/style/vendor/owl-carousel/owl.theme.default.min.css"
+    />
+    <!-- CSS Lainnya -->
+    <link rel="stylesheet" href="/blog/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/blog">MY BLOG</a>
+        <button
+          class="navbar-toggler rounded-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#togglerContent"
+          aria-controls="togglerContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <i class="fas fa-angle-down"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="togglerContent">
+          <ul class="navbar-nav ms-auto me-5 mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/blog"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navDrop"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Topics
+              </a>
+              <ul class="dropdown-menu rounded-0" aria-labelledby="navDrop">
+                <li>
+                  <a class="dropdown-item" href="category.html">Programming</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Algorithm</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Web Development</a></li>
+                <li><a class="dropdown-item" href="#">Web Design</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Opinion</a></li>
+                <li><a class="dropdown-item" href="#">Random</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="profile.html">Who am i?</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <form class="d-flex">
+            <input
+              class="form-control rounded-0 me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-light rounded-0 me-4" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- INCLUDES BODY -->
+    <center>
+      <%- include('../../layouts/errors.ejs') %> <%-
+      include('../../layouts/msg.ejs') %>
+    </center>
+
+    <%- body %>
+    <!-- INCLUDES BODY -->
+
+    <footer class="container-fluid">
+      <div class="row">
+        <div class="col-12 p-3 bg-dark text-white text-center">
+          &copy; 2021 | All rights reserved
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <!-- jQuery -->
+    <script src="/style/vendor/jquery/jquery.3.6.0.js"></script>
+
+    <!-- BOOTSTRAP -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- carousel file -->
+    <script src="/style/vendor/owl-carousel/owl.carousel.min.js"></script>
+
+    <script
+      src="/blog/js/vendor/apexcharts.min.js"
+      type="text/javascript"
+    ></script>
+    <!-- <script
+      src="/blog/js/vendor/tinymce/tinymce.min.js"
+      type="text/javascript"
+    ></script> -->
+    <script
+      type="text/javascript"
+      src="https://cdn.tiny.cloud/1/5phtr0233cl6p2q83pj06enh90rbfo2rnl4rgszruamhs5it/tinymce/5/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+
+    <script src="/blog/js/app.js" type="text/javascript"></script>
+    <!-- JavaScript -->
+  </body>
+</html>

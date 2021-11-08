@@ -86,11 +86,11 @@ das.get('/', (req, res) => {
   res.json({ message: 'haii :)' });
 });
 
-das.get('/tes', (req, res) => {
-  res.render('tes', {
-    layout: 'layouts/main',
-  });
-});
+// das.get('/blog', (req, res) => {
+//   res.render('blog/index', {
+//     layout: 'blog/layouts/main',
+//   });
+// });
 
 das.get('/api/dashboard', isAuthenticated, async (req, res) => {
   let getUser = await findAllUser();
@@ -109,6 +109,7 @@ require('./app/routes/islam.route')(das);
 require('./app/routes/user.route')(das);
 require('./app/routes/admin.route')(das);
 require('./app/routes/member.route')(das);
+require('./app/routes/blog.route')(das);
 das.use('/auth', authRouters);
 
 // LISTEN

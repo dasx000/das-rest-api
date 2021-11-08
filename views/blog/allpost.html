@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Post | Mahadi Hasan</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="resources/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/vendor/all.min.css">
+    <link rel="stylesheet" href="resources/css/vendor/owl.carousel.min.css">
+    <link rel="stylesheet" href="resources/css/vendor/owl.theme.default.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    
+    <!-- JavaScript -->
+    <script src="resources/js/vendor/jquery.min.js" type="text/javascript"></script>
+    <script src="resources/js/vendor/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="resources/js/vendor/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="resources/js/vendor/apexcharts.min.js" type="text/javascript"></script>
+    <script src="resources/js/vendor/tinymce/tinymce.min.js" type="text/javascript"></script>    
+    <script src="resources/js/app.js" type="text/javascript"></script>   
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Mahadi's Note</a>
+            <button class="navbar-toggler rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#togglerContent" aria-controls="togglerContent" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <i class="fas fa-angle-down"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="togglerContent">
+                
+                <ul class="navbar-nav ms-auto me-5 mb-2 mb-lg-0">
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navDrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="resources/media/profile.jpg" id="thumbPropicNav" alt=""> Mahadi
+                        </a>
+                        <ul class="dropdown-menu rounded-0" aria-labelledby="navDrop">
+                            <li><a class="dropdown-item" href="#">Account</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>                            
+                        </ul>
+                    </li>
+                    
+                </ul>
+                                
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container-fluid overflow-hidden">
+        
+        <div class="row g-3 mt-5 mb-3">
+            
+            <div class="col-md-4 col-sm-12">
+
+                <div class="border p-2">
+
+                    <div class="accordion" id="sideNav">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="postsNav">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#posts"  aria-expanded="false" aria-controls="posts">
+                                    <i class="far fa-newspaper me-2"></i> Post
+                                </button>
+                            </h2>
+                            <div id="posts" class="accordion-collapse collapse" aria-labelledby="postsNav" data-bs-parent="#sideNav">
+                                <div class="accordion-body">
+                                    <a href="#" class="subNavSide"> <i class="far fa-keyboard me-2"> </i>Create Post</a>
+                                    <a href="#" class="subNavSide"> <i class="far fa-eye me-2"></i> All Post</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="userNav">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#users"  aria-expanded="false"  aria-controls="users">
+                                    <i class="far fa-user-circle me-2"></i> User
+                                </button>
+                            </h2>
+                            <div id="users" class="accordion-collapse collapse" aria-labelledby="userNav" data-bs-parent="#sideNav">
+                                <div class="accordion-body">
+                                    <a href="#" class="subNavSide"> <i class="fas fa-user-plus me-2"></i> Create</a>
+                                    <a href="#" class="subNavSide"> <i class="far fa-eye me-2"></i>View</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="feedbackNav">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#feedback"  aria-expanded="false"  aria-controls="feedback">
+                                    <i class="far fa-comment-dots me-2"></i> Feedback
+                                </button>
+                            </h2>
+                            <div id="feedback" class="accordion-collapse collapse" aria-labelledby="feedbackNav" data-bs-parent="#sideNav">
+                                <div class="accordion-body">
+                                    <a href="#" class="subNavSide"> <i class="far fa-eye me-2"></i> View</a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>                   
+
+                </div>
+
+            </div>
+            
+
+            <div class="col-md-8 col-sm-12">
+                <div class="border p-4 mb-2">
+                    <h2 class="h2 mb-3">View all post</h2>                    
+                    
+                    <div class="border my-2 p-3">
+                        <h5 class="h5 text-primary">Random Post Title</h5>
+                        <p><small>22 Dec, 2021</small></p> 
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto rerum, consequuntur tempora obcaecati dolorem ipsa officiis delectus nulla soluta est eveniet similique alias deserunt doloremque iste repellat amet in sunt.
+                        </p>
+                        <a class="btn btn-success btn-sm rounded-0"><i class="far fa-eye"></i> View</a>
+                        <a class="btn btn-primary btn-sm rounded-0"><i class="far fa-edit"></i> Edit</a>
+                        <a class="btn btn-danger btn-sm rounded-0"><i class="far fa-trash-alt"></i> Delete</a>
+                        
+                        <select class="form-select form-select-sm rounded-0 d-inline w-25" name="" id="">
+                            <option value="published">Published</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                    
+                    </div>
+
+                    <div class="border my-2 p-3">
+                        <h5 class="h5 text-primary">Random Post Title</h5>
+                        <p><small>22 Dec, 2021</small></p> 
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto rerum, consequuntur tempora obcaecati dolorem ipsa officiis delectus nulla soluta est eveniet similique alias deserunt doloremque iste repellat amet in sunt.
+                        </p>
+                        <a class="btn btn-success btn-sm rounded-0"><i class="far fa-eye"></i>View</a>
+                        <a class="btn btn-primary btn-sm rounded-0"><i class="far fa-edit"></i> Edit</a>
+                        <a class="btn btn-danger btn-sm rounded-0"><i class="far fa-trash-alt"></i> Delete</a>
+                        
+                        <select class="form-select form-select-sm rounded-0 d-inline w-25" name="" id="">
+                            <option value="published">Published</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                    
+                    </div>
+
+                    <div class="border my-2 p-3">
+                        <h5 class="h5 text-primary">Random Post Title</h5>
+                        <p><small>22 Dec, 2021</small></p> 
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto rerum, consequuntur tempora obcaecati dolorem ipsa officiis delectus nulla soluta est eveniet similique alias deserunt doloremque iste repellat amet in sunt.
+                        </p>
+                        <a class="btn btn-success btn-sm rounded-0"><i class="far fa-eye"></i> View</a>
+                        <a class="btn btn-primary btn-sm rounded-0"><i class="far fa-edit"></i> Edit</a>
+                        <a class="btn btn-danger btn-sm rounded-0"><i class="far fa-trash-alt"></i> Delete</a>
+                        
+                        <select class="form-select form-select-sm rounded-0 d-inline w-25" name="" id="">
+                            <option value="published">Published</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                    
+                    </div>
+
+                    <div class="border my-2 p-3">
+                        <h5 class="h5 text-primary">Random Post Title</h5>
+                        <p><small>22 Dec, 2021</small></p> 
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto rerum, consequuntur tempora obcaecati dolorem ipsa officiis delectus nulla soluta est eveniet similique alias deserunt doloremque iste repellat amet in sunt.
+                        </p>
+                        <a class="btn btn-success btn-sm rounded-0"><i class="far fa-eye"></i> View</a>
+                        <a class="btn btn-primary btn-sm rounded-0"><i class="far fa-edit"></i> Edit</a>
+                        <a class="btn btn-danger btn-sm rounded-0"><i class="far fa-trash-alt"></i> Delete</a>
+                            
+                        <select class="form-select form-select-sm rounded-0 d-inline w-25" name="" id="">
+                            <option value="published">Published</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                                          
+                    </div>
+
+                    <div class="border my-2 p-3">
+                        <h5 class="h5 text-primary">Random Post Title</h5>
+                        <p><small>22 Dec, 2021</small></p> 
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto rerum, consequuntur tempora obcaecati dolorem ipsa officiis delectus nulla soluta est eveniet similique alias deserunt doloremque iste repellat amet in sunt.
+                        </p>
+                        <a class="btn btn-success btn-sm rounded-0"><i class="far fa-eye"></i> View</a>
+                        <a class="btn btn-primary btn-sm rounded-0"><i class="far fa-edit"></i> Edit</a>
+                        <a class="btn btn-danger btn-sm rounded-0"><i class="far fa-trash-alt"></i> Delete</a>
+                        
+                        <select class="form-select form-select-sm rounded-0 d-inline w-25" name="" id="">
+                            <option value="published">Published</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                    
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link rounded-0" href="#">Previous</a></li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item"><a class="page-link rounded-0" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+        
+    </div>
+
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col-12 p-3 bg-dark text-white text-center">
+                &copy; 2021 | All rights reserved
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        tinymce.init({selector:'#content'});
+    </script>
+</body>
+</html>

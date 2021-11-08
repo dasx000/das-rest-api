@@ -9,5 +9,6 @@ db.mongoose = mongoose;
 db.url = dbConfig.url;
 db.students = require('./student.model')(mongoose);
 db.users = require('./user.model')(mongoose);
+db.articles = require('./article.model')(mongoose);
 
 module.exports = db;
