@@ -17,5 +17,13 @@ const fail = (status, mess = 'error') => {
   };
   return fail;
 };
+const invalidKey = () => {
+  const fail = {
+    Owner: 'DASX000',
+    status: false,
+    message: 'invalid apikey. Login dahulu untuk mendapatkan apikey!',
+  };
+  return fail;
+};
 
-module.exports = { data, fail };
+module.exports = { data, fail, invalidKey };

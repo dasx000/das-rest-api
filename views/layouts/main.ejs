@@ -48,6 +48,11 @@
   </head>
 
   <body>
+    <!-- FUNCTION JS -->
+    <% let isUser = user != undefined ? true: false%> <% let img = isUser ?
+    user.img: 'https://i.ibb.co/bms8TZT/f9a09806a199.png'%> <% let apikey =
+    isUser ? user.apikey: 'login-first'%>
+    <!-- FUNCTION JS -->
     <div id="app">
       <div id="sidebar" class="active">
         <div class="sidebar-wrapper active">
@@ -69,7 +74,7 @@
             <ul class="menu">
               <!-- START MENU ADMIIN  -->
 
-              <% if( user.role == 1 ) {%>
+              <% if(isUser) {%> <% if( user.role == 1 ) {%>
               <li class="sidebar-title sidebar-admin">Menu Admin</li>
               <li class="sidebar-item">
                 <a href="/api/admin/list_user" class="sidebar-link">
@@ -86,7 +91,7 @@
                 </a>
               </li>
 
-              <% }%>
+              <% }%> <%}%>
 
               <li class="sidebar-title">Features Api</li>
 
@@ -116,26 +121,29 @@
                 <ul class="submenu">
                   <li class="submenu-item">
                     <a
-                      href="/api/tools/ytmp4?url=https://youtu.be/JmbvEsPk_Ok"
+                      href="/api/tools/ytmp4?url=https://youtu.be/JmbvEsPk_Ok&apikey=<%- apikey %>"
                       target="blank"
-                      >YTMP4</a
                     >
+                      YTMP4
+                    </a>
                   </li>
                   <li class="submenu-item">
                     <a
-                      href="/api/tools/ytmp3?url=https://youtu.be/JmbvEsPk_Ok"
+                      href="/api/tools/ytmp3?url=https://youtu.be/JmbvEsPk_Ok&apikey=<%- apikey %>"
                       target="blank"
                       >YTMP3</a
                     >
                   </li>
                   <li class="submenu-item">
-                    <a href="/api/tools/ytplay?q=javascript" target="blank"
+                    <a
+                      href="/api/tools/ytplay?q=javascript&apikey=<%- apikey %>"
+                      target="blank"
                       >YTPLAY</a
                     >
                   </li>
                   <li class="submenu-item">
                     <a
-                      href="/api/tools/scihub?doi=https://doi.org/10.1016/j.ecolmodel.2018.05.024"
+                      href="/api/tools/scihub?doi=https://doi.org/10.1016/j.ecolmodel.2018.05.024&apikey=<%- apikey %>"
                       target="blank"
                       >Scihub</a
                     >
@@ -152,27 +160,29 @@
                 </a>
                 <ul class="submenu">
                   <li class="submenu-item">
-                    <a href="/api/islam/list_surah" target="blank"
+                    <a
+                      href="/api/islam/list_surah?apikey=<%- apikey %>"
+                      target="blank"
                       >List Surah</a
                     >
                   </li>
                   <li class="submenu-item">
                     <a
-                      href="/api/islam/search_word?q=dzulkarnain"
+                      href="/api/islam/search_word?q=dzulkarnain&apikey=<%- apikey %>"
                       target="blank"
                       >Cari Kata</a
                     >
                   </li>
                   <li class="submenu-item">
                     <a
-                      href="/api/islam/search_surah?nomor_surah=1"
+                      href="/api/islam/search_surah?nomor_surah=1&apikey=<%- apikey %>"
                       target="blank"
                       >Cari Surah</a
                     >
                   </li>
                   <li class="submenu-item">
                     <a
-                      href="/api/islam/tafsir_surah?nomor_surah=1"
+                      href="/api/islam/tafsir_surah?nomor_surah=1&apikey=<%- apikey %>"
                       target="blank"
                       >Tafsir Surah</a
                     >
@@ -190,7 +200,7 @@
                 <ul class="submenu">
                   <li class="submenu-item">
                     <a
-                      href="/api/tools/short-url?url=https://doi.org/10.1016/j.ecolmodel.2018.05.024"
+                      href="/api/tools/short-url?url=https://doi.org/10.1016/j.ecolmodel.2018.05.024&apikey=<%- apikey %>"
                       target="blank"
                       >Tinyurl</a
                     >
@@ -229,7 +239,9 @@
                           </div>
                         </div>
                         <div class="col-md-8">
-                          <h6 class="text-muted font-semibold">Visitors</h6>
+                          <h6 class="text-muted font-semibold" id="ajggg">
+                            Visitors
+                          </h6>
                           <h6 class="font-extrabold mb-0">112.000</h6>
                         </div>
                       </div>
@@ -303,10 +315,11 @@
                   <div class="d-flex align-items-center">
                     <div class="col-12">
                       <div class="avatar avatar-xl">
-                        <img src="<%- user.img %>" alt="Face 1" />
+                        <img src="<%- img %>" alt="Face 1" />
 
                         <h6 class="font-bold mx-3 my-3">MY PROFILE</h6>
                       </div>
+                      <% if(isUser) {%>
                       <div class="profile-content">
                         <h6 class="title">Email</h6>
                         <h6 class="font-bold isi"><%= user.email %></h6>
@@ -334,6 +347,24 @@
                           </button>
                         </a>
                       </div>
+                      <%} else {%>
+                      <div class="profile-content">
+                        <h6 class="font-bold isi">
+                          Login dahulu untuk akses features !
+                        </h6>
+                        <hr />
+                        <a href="/auth/login">
+                          <button type="button" class="btn btn-primary">
+                            login
+                          </button>
+                        </a>
+                        <a href="/auth/logout">
+                          <button type="button" class="btn btn-info">
+                            Logout
+                          </button>
+                        </a>
+                      </div>
+                      <%} %>
                     </div>
                   </div>
                 </div>

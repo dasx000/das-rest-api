@@ -27,7 +27,7 @@ async function checkEmail(email) {
 
 async function getApikey(id) {
   let users = await Users.findOne({ _id: id });
-  return { apikey: users.apikey, userName: users.username };
+  return users.apikey;
 }
 // module.exports.getApikey = getApikey;
 

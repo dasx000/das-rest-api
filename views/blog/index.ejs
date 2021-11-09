@@ -4,14 +4,16 @@
       <div id="topPostSlider" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <!-- carousel  -->
-          <% let klas = ''%> <% for(let i = article.length-1; i > -1; i--) {%>
+          <% let klas = '' %> <% let y = article.length >= 6 ? 5 :
+          article.length%> <% for(let i = 0; i < y; i++) {%> <% let z =
+          article.length-1-i %>
           <div class="carousel-item active<%-klas%>">
             <%klas += '0'%>
             <div class="card rounded-0 mb-3">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img
-                    src="<%-article[i].img%>"
+                    src="<%-article[z].img%>"
                     class="img-fluid card-media"
                     alt=""
                   />
@@ -19,14 +21,14 @@
 
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h2 class="card-title"><%= article[i].title %></h2>
+                    <h2 class="card-title"><%= article[z].title %></h2>
                     <p class="card-text">
                       <small class="text-muted"
                         >22 Dec, 2020 <i class="far fa-eye"></i> 1211
                         <i class="far fa-comments"></i> 51</small
                       >
                     </p>
-                    <% const contens = article[i].content %>
+                    <% const contens = article[z].content %>
                     <p class="card-text fs-4">
                       <%- contens.substring(0, 100) %>
                     </p>

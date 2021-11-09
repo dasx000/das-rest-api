@@ -1,9 +1,17 @@
-const { data, fail } = require('../../message');
+const { data, fail, invalidKey } = require('../../message');
 const { scihub } = require('../../lib/scihub');
 const axios = require('axios');
 const { ytMp3, ytMp4, ytPlay } = require('../../lib/youtube');
+const {
+  getApikey,
+  getRole,
+  findAllUser,
+  cekKey,
+} = require('../../database/function');
 
 exports.sci = async (req, res) => {
+   const cekApikey = await cekKey(req.query.apikey);
+   if (!cekApikey) return res.send(invalidKey());
   const link = req.query.doi;
   const result = await scihub(link);
 
@@ -15,6 +23,8 @@ exports.sci = async (req, res) => {
 };
 
 exports.short_url = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
   const url = req.query.url;
   await axios
     .get(`https://tinyurl.com/api-create.php?url=${url}`)
@@ -28,6 +38,8 @@ exports.short_url = async (req, res) => {
 };
 
 exports.ytMP3 = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
   const url = req.query.url;
   await ytMp3(url)
     .then((results) => {
@@ -66,6 +78,8 @@ exports.ytMP3 = async (req, res) => {
     });
 };
 exports.ytMP4 = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
   const url = req.query.url;
   await ytMp4(url)
     .then((results) => {
@@ -107,6 +121,8 @@ exports.ytMP4 = async (req, res) => {
 };
 
 exports.ytPLAY = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
   const q = req.query.q;
   await ytPlay(q)
     .then((result) => {

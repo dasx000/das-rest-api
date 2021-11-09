@@ -1,7 +1,15 @@
-const { data, fail } = require('../../message');
+const { data, fail, invalidKey } = require('../../message');
 const axios = require('axios');
+const {
+  getApikey,
+  getRole,
+  findAllUser,
+  cekKey,
+} = require('../../database/function');
 
 exports.search_word = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
   const q = req.query.q;
 
   await axios
@@ -13,7 +21,10 @@ exports.search_word = async (req, res) => {
       res.status(406).send(fail(406, `error`));
     });
 };
+
 exports.list_surah = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
   await axios
     .get(`https://equran.id/api/surat`)
     .then((result) => {
@@ -24,6 +35,8 @@ exports.list_surah = async (req, res) => {
     });
 };
 exports.search_surah = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
   const nomor = req.query.nomor_surah;
   await axios
     .get(`https://equran.id/api/surat/${nomor}`)
@@ -37,6 +50,8 @@ exports.search_surah = async (req, res) => {
     });
 };
 exports.tafsir_surah = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
   const nomor = req.query.nomor_surah;
   await axios
     .get(`https://equran.id/api/tafsir/${nomor}`)

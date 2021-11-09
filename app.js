@@ -17,11 +17,16 @@ const { sleep } = require('./lib/tools');
 const { getApikey, getRole, findAllUser } = require('./database/function');
 const authRouters = require('./app/routes/auth.route');
 const session = require('express-session');
+const expressVisitorCounter = require('express-visitor-counter');
 const MemoryStore = require('memorystore')(session);
 const compression = require('compression');
 // END OTENTIKASI USER
 // == OTENTIFIKASI USER ==
 das.set('trust proxy', 1);
+// connect to database mongodb
+const dbConnection = connectMongoDb();
+const counters = {};
+// const counters = dbConnection.db().collection('counters');
 das.use(compression());
 das.set('view engine', 'ejs');
 das.use(expressLayout);
@@ -48,7 +53,11 @@ das.use(
     }),
   })
 );
-
+das.use(
+  expressVisitorCounter({
+    hook: (counterId) => (counters[counterId] = (counters[counterId] || 0) + 1),
+  })
+);
 das.use(cookieParser());
 
 das.use(passport.initialize());
@@ -67,23 +76,18 @@ das.use(function (req, res, next) {
 });
 das.use(
   fileUpload({
-    limits: { fileSize: 2 * 1024 * 1024 },
+    limits: { fileSize: 10 * 1024 * 1024 },
   })
 );
 
 // == END OTENTIFIKASI USER ==
-
-// connect to database mongodb
-connectMongoDb();
+das.get('/', (req, res, next) => {
+  res.json(counters);
+  // res.json({ message: 'haii :)' });
+});
 
 das.get('/upload', (req, res) => {
   res.render('upload', { layout: false });
-});
-// const express = require('express');
-
-das.get('/', (req, res) => {
-  // res.render('login', { layout: false });
-  res.json({ message: 'haii :)' });
 });
 
 // das.get('/blog', (req, res) => {
@@ -91,8 +95,9 @@ das.get('/', (req, res) => {
 //     layout: 'blog/layouts/main',
 //   });
 // });
+// console.log(dbConnection);
 
-das.get('/api/dashboard', isAuthenticated, async (req, res) => {
+das.get('/api/dashboard', async (req, res) => {
   let getUser = await findAllUser();
 
   res.render('tes', {
