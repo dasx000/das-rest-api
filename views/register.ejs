@@ -43,7 +43,7 @@
               register-bg
             "
           >
-            <div class="card col-lg-4 mx-auto">
+            <div class="card col-lg-4 mx-auto auth-area">
               <div class="card-body px-5 py-5">
                 <h3 class="card-title text-left mb-3">Register</h3>
                 <%- include('layouts/msg') %> <%- include('layouts/errors') %>
@@ -89,7 +89,7 @@
                     <a href="#" class="forgot-pass">Forgot password</a>
                   </div>
                   <div class="text-center">
-                    <div><%- recaptcha %></div>
+                    <div class="recaptcha-display"><%- recaptcha %></div>
                     <br />
                     <button
                       href="/auth/login"

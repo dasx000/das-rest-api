@@ -98,3 +98,14 @@
 .count-indicator span.count {
   animation: blinker 2s linear infinite;
 }
+
+/* border auth */
+.auth-area {
+  border-radius: 15px !important;
+}
+
+/* recaptcha-display */
+.recaptcha-display {
+  transform: scale(0.77);
+  transform-origin: 0 0;
+}
