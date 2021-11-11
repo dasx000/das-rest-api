@@ -1,0 +1,256 @@
+<!-- FUNCTION JS -->
+<% let isUser = user != undefined ? true: false%> <% let img = isUser ?
+user.img: 'https://i.ibb.co/bms8TZT/f9a09806a199.png'%> <% let apikey = isUser ?
+user.apikey: 'login-first'%> <% let name = isUser ? (user.fullName == `` ?
+`Guest` : user.fullName): 'Guest' %> <% let myrole= isUser ? (user.role == 1 ?
+'Admin': (user.role == 2 ? 'Premium':"Member")): 'Login First'%>
+<!-- FUNCTION JS -->
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <div
+    class="
+      sidebar-brand-wrapper
+      d-none d-lg-flex
+      align-items-center
+      justify-content-center
+      fixed-top
+    "
+  >
+    <a class="sidebar-brand brand-logo" href="/api"
+      ><img src="/corona/assets/images/logo.svg" alt="logo"
+    /></a>
+    <a class="sidebar-brand brand-logo-mini" href="/api"
+      ><img src="/corona/assets/images/mini-logo.svg" alt="logo"
+    /></a>
+  </div>
+  <ul class="nav">
+    <li class="nav-item profile">
+      <div class="profile-desc">
+        <div class="profile-pic">
+          <div class="count-indicator">
+            <img class="img-xs rounded-circle" src="<%- img %>" alt="" />
+            <span class="count bg-success"></span>
+          </div>
+          <div class="profile-name">
+            <h5 class="mb-0 font-weight-normal"><%= name %></h5>
+            <span><%= myrole %></span>
+          </div>
+        </div>
+        <a href="#" id="profile-dropdown" data-toggle="dropdown"
+          ><i class="mdi mdi-dots-vertical"></i
+        ></a>
+        <div
+          class="
+            dropdown-menu dropdown-menu-right
+            sidebar-dropdown
+            preview-list
+          "
+          aria-labelledby="profile-dropdown"
+        >
+          <a href="/api/member/edit_profile" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-settings text-primary"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1 text-small">
+                Account settings
+              </p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-onepassword text-info"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1 text-small">
+                Change Password
+              </p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <% if (isUser) { %>
+          <a href="/auth/logout" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-logout text-success"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1 text-small">Logout</p>
+            </div>
+          </a>
+          <% } else {%>
+          <a href="/auth/login" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-login text-success"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1 text-small">Login</p>
+            </div>
+          </a>
+          <% } %>
+        </div>
+      </div>
+    </li>
+    <!-- START NAVIGATION -->
+    <li class="nav-item nav-category">
+      <span class="nav-link">Navigation</span>
+    </li>
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="/api">
+        <span class="menu-icon">
+          <i class="mdi mdi-speedometer"></i>
+        </span>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item menu-items">
+      <a
+        href="https://wa.me/15676666644?text=*Request%20Fitur*%20:"
+        class="nav-link"
+        target="blank"
+      >
+        <span class="menu-icon"> <i class="mdi mdi-whatsapp"></i></span>
+        <span class="menu-title">Request Fitur?</span>
+      </a>
+    </li>
+
+    <!-- END NAVIGATIONS -->
+
+    <!-- START MENU ADMIN -->
+    <% if(isUser && user.role == 1) {%>
+    <li class="nav-item nav-category">
+      <span class="nav-link">Menu Admin</span>
+    </li>
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="/api/admin/list_user">
+        <span class="menu-icon">
+          <i class="mdi mdi-speedometer"></i>
+        </span>
+        <span class="menu-title">List User</span>
+      </a>
+    </li>
+
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="/api/admin/list_students">
+        <span class="menu-icon">
+          <i class="mdi mdi-speedometer"></i>
+        </span>
+        <span class="menu-title">List Student</span>
+      </a>
+    </li>
+    <%}%>
+    <!-- END MENU ADMIN -->
+
+    <!-- START MENU API -->
+    <li class="nav-item nav-category">
+      <span class="nav-link">API</span>
+    </li>
+
+    <li class="nav-item menu-items">
+      <a
+        class="nav-link"
+        data-toggle="collapse"
+        href="#ui-basic"
+        aria-expanded="false"
+        aria-controls="ui-basic"
+      >
+        <span class="menu-icon">
+          <i class="mdi mdi-cloud-download"></i>
+        </span>
+        <span class="menu-title">Downloader</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/tools/ytmp4?url=https://youtu.be/JmbvEsPk_Ok&apikey=<%- apikey %>"
+              >YTMP4</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/tools/ytmp3?url=https://youtu.be/JmbvEsPk_Ok&apikey=<%- apikey %>"
+              >YTMP3</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/tools/ytplay?q=javascript&apikey=<%- apikey %>"
+              >YTPLAY</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item menu-items">
+      <a
+        class="nav-link"
+        data-toggle="collapse"
+        href="#auth"
+        aria-expanded="false"
+        aria-controls="auth"
+      >
+        <span class="menu-icon">
+          <i class="mdi mdi-star-outline"></i>
+        </span>
+        <span class="menu-title">Islami</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="auth">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/islam/list_surah?apikey=<%- apikey %>"
+            >
+              List Surah
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/islam/search_word?q=dzulkarnain&apikey=<%- apikey %>"
+            >
+              Cari Kata
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/islam/tafsir_surah?nomor_surah=1&apikey=<%- apikey %>"
+            >
+              Tafsir Surah
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/islam/search_surah?nomor_surah=1&apikey=<%- apikey %>"
+            >
+              Cari Surah
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>

@@ -14,7 +14,12 @@ const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const { isAuthenticated } = require('./lib/auth');
 const { sleep } = require('./lib/tools');
-const { getApikey, getRole, findAllUser } = require('./database/function');
+const {
+  getApikey,
+  getRole,
+  findAllUser,
+  runVisitor,
+} = require('./database/function');
 const authRouters = require('./app/routes/auth.route');
 const session = require('express-session');
 const expressVisitorCounter = require('express-visitor-counter');
@@ -80,28 +85,29 @@ das.use(
   })
 );
 
-// == END OTENTIFIKASI USER ==
-das.get('/', (req, res, next) => {
-  res.json(counters);
-  // res.json({ message: 'haii :)' });
+// res.json({ message: 'haii :)' });
+das.get('/', async function (req, res) {
+  const visitor = await runVisitor();
+  res.json({ visitors: visitor });
+  // Storing the records from the Visitor table
+});
+// res.json({ message: 'haii :)' });
+das.get('/tes', async function (req, res) {
+  const visitor = await runVisitor();
+  res.json({ visitors: visitor });
+  // Storing the records from the Visitor table
 });
 
-das.get('/upload', (req, res) => {
-  res.render('upload', { layout: false });
+das.get('/p', (req, res) => {
+  res.render('index', { layout: false });
 });
-
-// das.get('/blog', (req, res) => {
-//   res.render('blog/index', {
-//     layout: 'blog/layouts/main',
-//   });
-// });
-// console.log(dbConnection);
-
-das.get('/api/dashboard', async (req, res) => {
+das.get('/api', async (req, res) => {
+  const visitor = await runVisitor();
   let getUser = await findAllUser();
-
-  res.render('tes', {
+  res.render('dashboard', {
+    title: 'Dashboard',
     user: req.user,
+    utils: { visitor },
     users: getUser,
     layout: 'layouts/main',
   });

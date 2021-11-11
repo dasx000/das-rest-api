@@ -1,93 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Mazer Admin Dashboard</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
-      rel="stylesheet"
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+    <title>Corona Admin</title>
+    <!-- plugins:css -->
     <link
       rel="stylesheet"
-      href="/assets/vendors/bootstrap-icons/bootstrap-icons.css"
+      href="/corona/assets/vendors/mdi/css/materialdesignicons.min.css"
     />
-    <link rel="stylesheet" href="/assets/css/app.css" />
-    <link rel="stylesheet" href="/style/css/style.css" />
-    <link rel="stylesheet" href="/assets/css/pages/auth.css" />
+    <link
+      rel="stylesheet"
+      href="/corona/assets/vendors/css/vendor.bundle.base.css"
+    />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/corona/assets/css/style.css" />
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="/corona/assets/images/favicon.png" />
   </head>
-
   <body>
-    <div id="auth">
-      <div class="row h-100">
-        <div class="col-lg-5 mx-auto">
-          <div class="container login-area">
-            <center>
-              <%- include('layouts/msg') %> <%- include('layouts/errors') %>
-            </center>
-            <h1 class="auth-title">Log in.</h1>
-            <p class="auth-subtitle mb-5">
-              Log in with your data that you entered during registration.
-            </p>
-
-            <form action="/auth/login" method="post">
-              <div class="form-group position-relative has-icon-left mb-4">
-                <input
-                  name="email"
-                  type="text"
-                  class="form-control form-control-xl"
-                  placeholder="email"
-                />
-                <div class="form-control-icon">
-                  <i class="bi bi-person"></i>
-                </div>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="row w-100 m-0">
+          <div
+            class="
+              content-wrapper
+              full-page-wrapper
+              d-flex
+              align-items-center
+              auth
+              login-bg
+            "
+          >
+            <div class="card col-lg-4 mx-auto">
+              <div class="card-body px-5 py-5">
+                <h3 class="card-title text-left mb-3">Login</h3>
+                <center>
+                  <%- include('layouts/msg') %> <%- include('layouts/errors') %>
+                </center>
+                <form action="/auth/login" method="post">
+                  <div class="form-group">
+                    <label>Email *</label>
+                    <input
+                      name="email"
+                      type="email"
+                      class="form-control p_input"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Password *</label>
+                    <input
+                      name="password"
+                      type="password"
+                      class="form-control p_input"
+                      required
+                    />
+                  </div>
+                  <div
+                    class="
+                      form-group
+                      d-flex
+                      align-items-center
+                      justify-content-between
+                    "
+                  >
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" />
+                        Remember me
+                      </label>
+                    </div>
+                    <a href="auth-forgot-password" class="forgot-pass"
+                      >Forgot password</a
+                    >
+                  </div>
+                  <div class="text-center">
+                    <div><%- recaptcha %></div>
+                    <br />
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-block enter-btn"
+                    >
+                      Login
+                    </button>
+                  </div>
+                  <!-- <div class="d-flex">
+                    <button class="btn btn-facebook mr-2 col">
+                      <i class="mdi mdi-facebook"></i> Facebook
+                    </button>
+                    <button class="btn btn-google col">
+                      <i class="mdi mdi-google-plus"></i> Google plus
+                    </button>
+                  </div> -->
+                  <p class="sign-up">
+                    Don't have an Account?<a href="register"> Sign Up</a>
+                  </p>
+                </form>
               </div>
-              <div class="form-group position-relative has-icon-left mb-4">
-                <input
-                  name="password"
-                  type="password"
-                  class="form-control form-control-xl"
-                  placeholder="Password"
-                />
-                <div class="form-control-icon">
-                  <i class="bi bi-shield-lock"></i>
-                </div>
-              </div>
-              <!-- <div class="form-check form-check-lg d-flex align-items-end">
-                <input
-                  class="form-check-input me-2"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                /> -->
-              <!-- <label
-                  class="form-check-label text-gray-600"
-                  for="flexCheckDefault"
-                >
-                  Keep me logged in
-                </label> -->
-              <!-- </div> -->
-              <br />
-              <div><%- recaptcha %></div>
-              <button class="btn btn-primary btn-block btn-lg shadow-lg mt-3">
-                Log in
-              </button>
-            </form>
-            <div class="text-center mt-3 text-lg fs-4">
-              <p class="text-gray-600">
-                Don't have an account?
-                <a href="register" class="font-bold">Sign up</a>.
-              </p>
-              <p>
-                <a class="font-bold" href="auth-forgot-password"
-                  >Forgot password?</a
-                >.
-              </p>
             </div>
           </div>
+          <!-- content-wrapper ends -->
         </div>
+        <!-- row ends -->
       </div>
+      <!-- page-body-wrapper ends -->
     </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="/corona/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="/corona/assets/js/off-canvas.js"></script>
+    <script src="/corona/assets/js/hoverable-collapse.js"></script>
+    <script src="/corona/assets/js/misc.js"></script>
+    <script src="/corona/assets/js/settings.js"></script>
+    <script src="/corona/assets/js/todolist.js"></script>
+    <!-- endinject -->
   </body>
 </html>

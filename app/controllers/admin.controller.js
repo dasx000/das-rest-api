@@ -1,5 +1,10 @@
 const { query } = require('express');
-const { getApikey, getRole, findAllUser } = require('../../database/function');
+const {
+  getApikey,
+  getRole,
+  findAllUser,
+  visitors,
+} = require('../../database/function');
 const db = require('../models/');
 const Users = db.users;
 
@@ -8,12 +13,14 @@ exports.list_user = async (req, res) => {
   try {
     res.render('admin/users', {
       user: req.user,
+      title: 'List User',
+      utils: { visitor: await visitors() },
       users: await findAllUser(),
       layout: 'layouts/main',
     });
   } catch (err) {
     console.log(err);
-    res.redirect('/api/dashboard');
+    res.redirect('/api');
   }
 };
 
@@ -33,37 +40,6 @@ exports.deleteUser = (req, res) => {
 };
 
 ///
-exports.saveProfile = async (req, res) => {
-  console.log(req.body.apikey);
-  const id = req.user.id;
-  const userName = req.body.userName;
-  req.body.userName = userName.toLowerCase();
-  req.body.apikey = req.body.apikey.replace(' ', '');
-
-  await Users.findByIdAndUpdate(id, req.body)
-    .then((result) => {
-      req.flash('success_msg', 'Success update data');
-      res.redirect('/api/admin/edit_profile');
-    })
-    .catch((err) => {
-      req.flash('error_msg', 'Error While Update Data');
-      console.log(err.message);
-      res.redirect('/api/admin/edit_profile');
-    });
-};
-
-exports.edit = async (req, res) => {
-  try {
-    res.render('user/edit', {
-      user: req.user,
-      users: await findAllUser(),
-      layout: 'layouts/main',
-    });
-  } catch (err) {
-    console.log(err);
-    res.redirect('/api/dashboard');
-  }
-};
 
 // controller edit user
 exports.editUser = async (req, res) => {
@@ -73,12 +49,13 @@ exports.editUser = async (req, res) => {
     res.render('admin/edit_user', {
       user: req.user,
       userTarget: user,
+      title: 'Edit User',
       users: await findAllUser(),
       layout: 'layouts/main',
     });
   } catch (err) {
     console.log(err);
-    res.redirect('/api/dashboard');
+    res.redirect('/api');
     req.flash('error_msg', 'failed request');
   }
 };
@@ -101,11 +78,13 @@ exports.listStudents = async (req, res) => {
   try {
     res.render('admin/students', {
       user: req.user,
+      title: 'List Students',
+      utils: { visitor: await visitors() },
       users: await findAllUser(),
       layout: 'layouts/main',
     });
   } catch (err) {
     console.log(err);
-    res.redirect('/api/dashboard');
+    res.redirect('/api');
   }
 };

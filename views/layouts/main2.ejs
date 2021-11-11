@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rest API | Diky Adisaputra</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- BOOTSTRAP 5 -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="/assets/vendors/bootstrap-icons/bootstrap-icons.css"
+    />
+    <!-- END BOOTSTRAP 5 -->
+
+    <link rel="stylesheet" href="/assets/vendors/iconly/bold.css" />
+
+    <link
+      rel="stylesheet"
+      href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css"
+    />
+
+    <!-- DATA TABLE -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css"
+    />
+
+    <!-- MY STYLE -->
+    <link rel="stylesheet" href="/assets/css/app.css" />
+    <link rel="stylesheet" href="/style/css/style.css" />
+    <link rel="stylesheet" href="/style/css/responsive.css" />
+    <!-- END MY STYLE -->
+
+    <link
+      rel="shortcut icon"
+      href="/assets/images/favicon.svg"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <!-- FUNCTION JS -->
+    <% let isUser = user != undefined ? true: false%> <% let img = isUser ?
+    user.img: 'https://i.ibb.co/bms8TZT/f9a09806a199.png'%> <% let apikey =
+    isUser ? user.apikey: 'login-first'%>
+
+    <div id="app">
+      <div id="sidebar" class="active">
+        <div class="sidebar-wrapper active">
+          <div class="sidebar-header">
+            <div class="d-flex justify-content-between">
+              <div class="logo">
+                <a href="/api"
+                  ><img src="/assets/images/logo/logo.png" alt="Logo" srcset=""
+                /></a>
+              </div>
+              <div class="toggler">
+                <a href="#" class="sidebar-hide d-xl-none d-block"
+                  ><i class="bi bi-x bi-middle"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="sidebar-menu">
+            <ul class="menu">
+              <!-- START MENU ADMIIN  -->
+
+              <% if(isUser) {%> <% if( user.role == 1 ) {%>
+              <li class="sidebar-title sidebar-admin">Menu Admin</li>
+              <li class="sidebar-item">
+                <a href="/api/admin/list_user" class="sidebar-link">
+                  <i class="bi bi-people-fill"></i>
+                  <span>List Users</span>
+                </a>
+              </li>
+
+              <!-- list students -->
+              <li class="sidebar-item">
+                <a href="/api/admin/list_students" class="sidebar-link">
+                  <i class="bi bi-people"></i>
+                  <span>List Students</span>
+                </a>
+              </li>
+
+              <% }%> <%}%>
+
+              <li class="sidebar-title">Features Api</li>
+
+              <!-- <li class="sidebar-item active">
+                <a href="/api" class="sidebar-link">
+                  <i class="bi bi-grid-fill"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li> -->
+              <li class="sidebar-item">
+                <a
+                  href="https://wa.me/15676666644?text=*Request%20Fitur*%20:"
+                  class="sidebar-link"
+                  target="blank"
+                >
+                  <i class="bi bi-whatsapp"></i>
+                  <span>Request Fitur?</span>
+                </a>
+              </li>
+
+              <!-- MENU DOWNLOADER-->
+              <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                  <i class="bi bi-cloud-download"></i>
+                  <span>Downloader</span>
+                </a>
+                <ul class="submenu">
+                  <li class="submenu-item">
+                    <a
+                      href="/api/tools/ytmp4?url=https://youtu.be/JmbvEsPk_Ok&apikey=<%- apikey %>"
+                      target="blank"
+                    >
+                      YTMP4
+                    </a>
+                  </li>
+                  <li class="submenu-item">
+                    <a
+                      href="/api/tools/ytmp3?url=https://youtu.be/JmbvEsPk_Ok&apikey=<%- apikey %>"
+                      target="blank"
+                      >YTMP3</a
+                    >
+                  </li>
+                  <li class="submenu-item">
+                    <a
+                      href="/api/tools/ytplay?q=javascript&apikey=<%- apikey %>"
+                      target="blank"
+                      >YTPLAY</a
+                    >
+                  </li>
+                  <li class="submenu-item">
+                    <a
+                      href="/api/tools/scihub?doi=https://doi.org/10.1016/j.ecolmodel.2018.05.024&apikey=<%- apikey %>"
+                      target="blank"
+                      >Scihub</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!-- END MENU DOWNLOADER -->
+
+              <!-- MENU ISLAMI -->
+              <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                  <i class="bi bi-star"></i>
+                  <span>Islami</span>
+                </a>
+                <ul class="submenu">
+                  <li class="submenu-item">
+                    <a
+                      href="/api/islam/list_surah?apikey=<%- apikey %>"
+                      target="blank"
+                      >List Surah</a
+                    >
+                  </li>
+                  <li class="submenu-item">
+                    <a
+                      href="/api/islam/search_word?q=dzulkarnain&apikey=<%- apikey %>"
+                      target="blank"
+                      >Cari Kata</a
+                    >
+                  </li>
+                  <li class="submenu-item">
+                    <a
+                      href="/api/islam/search_surah?nomor_surah=1&apikey=<%- apikey %>"
+                      target="blank"
+                      >Cari Surah</a
+                    >
+                  </li>
+                  <li class="submenu-item">
+                    <a
+                      href="/api/islam/tafsir_surah?nomor_surah=1&apikey=<%- apikey %>"
+                      target="blank"
+                      >Tafsir Surah</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!-- END MENU ISLAMI -->
+
+              <!-- MENU TOOLS-->
+              <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                  <i class="bi bi-gear"></i>
+                  <span>Tools</span>
+                </a>
+                <ul class="submenu">
+                  <li class="submenu-item">
+                    <a
+                      href="/api/tools/short-url?url=https://doi.org/10.1016/j.ecolmodel.2018.05.024&apikey=<%- apikey %>"
+                      target="blank"
+                      >Tinyurl</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!-- END MENU TOOLS -->
+            </ul>
+          </div>
+          <button class="sidebar-toggler btn x">
+            <i data-feather="x"></i>
+          </button>
+        </div>
+      </div>
+      <div id="main">
+        <header class="mb-3">
+          <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+          </a>
+        </header>
+
+        <div class="page-heading">
+          <a href="/api"> <h3>DASHBOARD</h3></a>
+        </div>
+        <div class="page-content">
+          <section class="row">
+            <div class="col-12 col-lg-9">
+              <div class="row">
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-3 py-4-5">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="stats-icon purple">
+                            <i class="iconly-boldShow"></i>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <h6 class="text-muted font-semibold" id="ajggg">
+                            Visitors
+                          </h6>
+                          <h6 class="font-extrabold mb-0">
+                            <%= utils.visitor %>
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-3 py-4-5">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="stats-icon blue">
+                            <i class="iconly-boldProfile"></i>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <h6 class="text-muted font-semibold">Users</h6>
+                          <h6 class="font-extrabold mb-0">
+                            <%= users.length %>
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-3 py-4-5">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="stats-icon green">
+                            <i class="iconly-boldAdd-User"></i>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <h6 class="text-muted font-semibold">Features Api</h6>
+                          <h6 class="font-extrabold mb-0">80.000</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-3 py-4-5">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="stats-icon red">
+                            <i class="iconly-boldBookmark"></i>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <h6 class="text-muted font-semibold">
+                            Total Request
+                          </h6>
+                          <h6 class="font-extrabold mb-0">112</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- INCLUDE BODY -->
+              <%- body %>
+              <!-- INCLUDE BODY -->
+            </div>
+            <div class="col-12 col-lg-3">
+              <div class="card">
+                <div class="card-body py-4 px-5">
+                  <div class="d-flex align-items-center">
+                    <div class="col-12">
+                      <div class="avatar avatar-xl">
+                        <img src="<%- img %>" alt="Face 1" />
+
+                        <h6 class="font-bold mx-3 my-3">MY PROFILE</h6>
+                      </div>
+                      <% if(isUser) {%>
+                      <div class="profile-content">
+                        <h6 class="title">Email</h6>
+                        <h6 class="font-bold isi"><%= user.email %></h6>
+                        <hr />
+                        <h6 class="title">Apikey</h6>
+                        <h6 class="font-bold isi"><%= user.apikey%></h6>
+                        <hr />
+                        <h6 class="title">Role</h6>
+                        <h6 class="font-bold isi">
+                          <%= user.role == 1 ? "Admin" : user.role == 2 ?
+                          "Premium" : "Free" %>
+                        </h6>
+                        <form
+                          action="/api/member/edit_profile"
+                          method="get"
+                          class="d-inline"
+                        >
+                          <button type="submit" class="btn btn-primary">
+                            Edit
+                          </button>
+                        </form>
+                        <a href="/auth/logout">
+                          <button type="button" class="btn btn-info">
+                            Logout
+                          </button>
+                        </a>
+                      </div>
+                      <%} else {%>
+                      <div class="profile-content">
+                        <h6 class="font-bold isi">
+                          Login dahulu untuk akses features !
+                        </h6>
+                        <hr />
+                        <a href="/auth/login">
+                          <button type="button" class="btn btn-primary">
+                            login
+                          </button>
+                        </a>
+                        <a href="/auth/logout">
+                          <button type="button" class="btn btn-info">
+                            Logout
+                          </button>
+                        </a>
+                      </div>
+                      <%} %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <footer>
+          <hr />
+          <div class="footer clearfix mb-0 text-muted">
+            <div class="float-start">
+              <p>2021 &copy; dasx000</p>
+            </div>
+            <div class="float-end">
+              <p>
+                Template By
+                <a href="http://ahmadsaugi.com"> A. Saugi</a>
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="/style/vendor/jquery/jquery.3.6.0.js"></script>
+
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"
+    ></script>
+
+    <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/js/mazer.js"></script>
+
+    <!-- javascript -->
+    <script src="/style/js/main.js"></script>
+  </body>
+</html>

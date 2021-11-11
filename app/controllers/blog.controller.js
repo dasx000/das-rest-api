@@ -17,13 +17,13 @@ const fs = require('fs');
 exports.blog = async (req, res) => {
   try {
     const dataz = await Articles.find();
+    console.log(dataz);
     res.render('blog/index', {
       layout: 'blog/layouts/main',
       article: dataz,
     });
   } catch (err) {
     console.log(err.message);
-    // res.status(500).send(fail(500, 'Some Error While Retrieving user!'));
   }
 };
 exports.create = (req, res) => {
@@ -38,6 +38,7 @@ exports.create = (req, res) => {
 };
 
 exports.store = async (req, res) => {
+  console.log(req.body.category);
   let img;
   let uploadPath;
   if (!req.files || Object.keys(req.files).length === 0) {

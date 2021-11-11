@@ -1,6 +1,3 @@
-<center>
-  <%- include('../layouts/msg') %> <%- include('../layouts/errors') %>
-</center>
 <div class="profile-picture">
   <img src="<%- user.img %>" alt="foto" class="img-fluid" />
   <form
@@ -18,7 +15,7 @@
 
 <div class="edit-user-area">
   <form
-    action="/api/admin/save_profile?_method=PUT"
+    action="/api/member/edit_profile?_method=PUT"
     method="POST"
     class="d-inline"
   >
@@ -90,7 +87,7 @@
       <label for="apikey" class="form-label">Apikey</label>
       <input
         type="text"
-        name="role"
+        name="apikey"
         id="disabledInput"
         class="form-control"
         value="<%= user.apikey %>"

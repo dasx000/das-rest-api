@@ -1,6 +1,7 @@
 // const { limitCount } = require('../lib/settings');
 const db = require('../app/models/');
 const Users = db.users;
+const Counters = db.counters;
 const photoDefault = 'https://i.ibb.co/bms8TZT/f9a09806a199.png';
 
 async function addUser(email, password, role, apikey, img = photoDefault) {
@@ -47,6 +48,14 @@ async function cekKey(apikey) {
 }
 // module.exports.cekKey = cekKey;
 
+async function visitors() {
+  let result = await Counters.findOne({ name: 'visitors' });
+  if (result === null) {
+    return 0;
+  } else {
+    return result.count;
+  }
+}
 async function findAllUser() {
   let result = await Users.find();
   if (result === null) {
@@ -57,10 +66,45 @@ async function findAllUser() {
 }
 // module.exports.findAllUser = findAllUser;
 
+// function run visitor
+const runVisitor = async () => {
+  let visitors = await Counters.findOne({ name: 'visitors' });
+
+  // If the app is being visited first
+  // time, so no records
+  if (visitors == null) {
+    // Creating a new default record
+    const beginCount = new Counters({
+      name: 'visitors',
+      count: 1,
+    });
+
+    // Saving in the database
+    beginCount.save();
+
+    // Logging when the app is visited first time
+    console.log('First visitor arrived');
+
+    // Sending thee count of visitor to the browser
+    return 1;
+  } else {
+    // Incrementing the count of visitor by 1
+    visitors.count += 1;
+
+    // Saving to the database
+    visitors.save();
+
+    // Sending thee count of visitor to the browser
+    return visitors.count;
+  }
+};
+
 module.exports = {
   findAllUser,
   cekKey,
   addUser,
+  visitors,
+  runVisitor,
   getRole,
   checkEmail,
   getApikey,
