@@ -1,8 +1,8 @@
 <!-- FUNCTION JS -->
 <% let isUser = user != undefined ? true: false%> <% let img = isUser ?
 user.img: 'https://i.ibb.co/bms8TZT/f9a09806a199.png'%> <% let apikey = isUser ?
-user.apikey: 'login-first'%> <% let name = isUser ? (user.fullName == `` ?
-`Guest` : user.fullName): 'Guest' %> <% let myrole= isUser ? (user.role == 1 ?
+user.apikey: 'login-first'%> <% let name = !isUser ? `Guest` : (user.fullName ?
+user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
 'Admin': (user.role == 2 ? 'Premium':"Member")): 'Login First'%>
 <!-- FUNCTION JS -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -92,6 +92,17 @@ user.apikey: 'login-first'%> <% let name = isUser ? (user.fullName == `` ?
             </div>
             <div class="preview-item-content">
               <p class="preview-subject ellipsis mb-1 text-small">Login</p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="/auth/register" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-account text-success"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1 text-small">Register</p>
             </div>
           </a>
           <% } %>

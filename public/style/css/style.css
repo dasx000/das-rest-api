@@ -109,3 +109,7 @@
   transform: scale(0.77);
   transform-origin: 0 0;
 }
+
+form input#disabledInput {
+  background-color: #000000;
+}

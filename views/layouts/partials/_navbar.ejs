@@ -6,6 +6,19 @@ user.apikey: 'login-first'%> <% let name = isUser ? (user.fullName == `` ?
 'Admin': (user.role == 2 ? 'Premium':"Member")): 'Login First'%>
 <!-- FUNCTION JS -->
 <nav class="navbar p-0 fixed-top d-flex flex-row">
+  <!-- mini logo -->
+  <div
+    class="
+      navbar-brand-wrapper
+      d-flex d-lg-none
+      align-items-center
+      justify-content-center
+    "
+  >
+    <a class="navbar-brand brand-logo-mini" href="/api"
+      ><img src="/corona/assets/images/mini-logo.svg" alt="logo"
+    /></a>
+  </div>
   <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
     <!-- BUTTON SWIPE -->
     <button
@@ -15,6 +28,14 @@ user.apikey: 'login-first'%> <% let name = isUser ? (user.fullName == `` ?
     >
       <span class="mdi mdi-menu"></span>
     </button>
+    <!-- Search products -->
+    <ul class="navbar-nav w-100" id="search-hidden">
+      <li class="nav-item w-100">
+        <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+          <input type="text" class="form-control" placeholder="Search.." />
+        </form>
+      </li>
+    </ul>
 
     <ul class="navbar-nav navbar-nav-right">
       <!-- START NOTIFICATION -->
@@ -75,6 +96,7 @@ user.apikey: 'login-first'%> <% let name = isUser ? (user.fullName == `` ?
           <p class="p-3 mb-0 text-center">See all notifications</p>
         </div>
       </li>
+
       <!-- END NOTIFICATION -->
       <li class="nav-item dropdown">
         <a
@@ -142,11 +164,23 @@ user.apikey: 'login-first'%> <% let name = isUser ? (user.fullName == `` ?
               <p class="preview-subject mb-1">Login</p>
             </div>
           </a>
+          <div class="dropdown-divider"></div>
+          <a href="/auth/register" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-account text-success"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1 text-small">Register</p>
+            </div>
+          </a>
           <% } %>
           <div class="dropdown-divider"></div>
         </div>
       </li>
     </ul>
+
     <button
       class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
       type="button"

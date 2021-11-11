@@ -61,7 +61,9 @@ exports.saveProfile = async (req, res) => {
   const id = req.user.id;
   const userName = req.body.userName;
   req.body.userName = userName.toLowerCase();
-  req.body.apikey = req.body.apikey.replace(' ', '');
+  if (req.user.role == 1 && req.user.role == 2) {
+    req.body.apikey = req.body.apikey.replace(' ', '');
+  }
 
   await Users.findByIdAndUpdate(id, req.body)
     .then((result) => {
