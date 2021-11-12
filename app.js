@@ -121,6 +121,7 @@ require('./app/routes/user.route')(das);
 require('./app/routes/admin.route')(das);
 require('./app/routes/member.route')(das);
 require('./app/routes/blog.route')(das);
+require('./app/routes/fun.route')(das);
 das.use('/auth', authRouters);
 
 // LISTEN

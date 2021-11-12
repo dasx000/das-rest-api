@@ -8,17 +8,18 @@ const {
   findAllUser,
   cekKey,
 } = require('../../database/function');
+const { imgbb } = require('../../lib/tools');
 
 exports.sci = async (req, res) => {
-   const cekApikey = await cekKey(req.query.apikey);
-   if (!cekApikey) return res.send(invalidKey());
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
   const link = req.query.doi;
   const result = await scihub(link);
 
   if (result.includes('http')) {
     res.send(data(result));
   } else {
-    res.status(406).send(fail(406, result));
+    res.status(406).send(fail(result));
   }
 };
 
@@ -32,8 +33,8 @@ exports.short_url = async (req, res) => {
       res.send(data(result.data));
     })
     .catch((err) => {
-      // res.status(406).send(fail(406, err));
-      res.status(406).send(fail(406, `Error`));
+      // res.status(406).send(fail(err));
+      res.status(406).send(fail(`Error`));
     });
 };
 
@@ -74,7 +75,7 @@ exports.ytMP3 = async (req, res) => {
       );
     })
     .catch((err) => {
-      res.status(406).send(fail(406, 'error'));
+      res.status(406).send(fail('error'));
     });
 };
 exports.ytMP4 = async (req, res) => {
@@ -116,7 +117,7 @@ exports.ytMP4 = async (req, res) => {
       );
     })
     .catch((err) => {
-      res.status(406).send(fail(406, 'error ytmp4'));
+      res.status(406).send(fail('error ytmp4'));
     });
 };
 
@@ -129,8 +130,42 @@ exports.ytPLAY = async (req, res) => {
       res.send(data(result, 'Succes. Module by Zekais'));
     })
     .catch((err) => {
-      res.status(406).send(fail(406, 'error'));
+      res.status(406).send(fail('error'));
     });
+};
+
+// ss mobile
+exports.ssPC = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
+  const ssResult = await axios.get(
+    `https://cdn.statically.io/screenshot/${req.query.url}`
+  );
+  const url = ssResult;
+  await imgbb(url)
+    .then((result) => {
+      res.send(data(result));
+    })
+
+    .catch((err) => {
+      res.send(fail(err.message));
+    });
+};
+exports.ssHP = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
+
+  const url = `https://cdn.statically.io/screenshot/device=mobile/${req.query.url}`;
+  const anu = await imgbb(url);
+  console.log(anu);
+  // .then((result) => {
+
+  //   console.log(result);
+  //   res.send(data(result));
+  // })
+  // .catch((err) => {
+  //   res.send(fail(err.message));
+  // });
 };
 
 // function file upload using express - fileupload

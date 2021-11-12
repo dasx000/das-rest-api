@@ -9,10 +9,10 @@ const data = (res, mess = `Success`) => {
   return result;
 };
 
-const fail = (status, mess = 'error') => {
+const fail = (mess = 'error') => {
   const fail = {
     Owner: 'DASX000',
-    status: status,
+    status: false,
     message: mess,
   };
   return fail;
