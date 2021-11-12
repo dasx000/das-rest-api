@@ -125,6 +125,8 @@ das.use('/auth', authRouters);
 
 // LISTEN
 
+console.log(__dirname);
+
 das.listen(port, () => {
   console.log(`Server started on PORT ${port}`);
 });
