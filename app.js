@@ -89,13 +89,7 @@ das.use(
 das.get('/', async function (req, res) {
   const visitor = await runVisitor();
 
-  const wiki = require('wikijs').default;
-
-  wiki()
-    .page('mawar')
-
-    .then(console.log); // Bruce Wayne
-  // res.json({ visitors: visitor });
+  res.json({ visitors: visitor });
 });
 // res.json({ message: 'haii :)' });
 das.get('/tes', async function (req, res) {
