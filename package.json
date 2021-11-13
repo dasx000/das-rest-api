@@ -49,6 +49,7 @@
     "password": "^0.1.1",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
+    "wikijs": "^6.3.2",
     "yt-search": "^2.10.2",
     "ytdl-core": "^4.9.1"
   }

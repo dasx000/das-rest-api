@@ -9,6 +9,8 @@ module.exports = (das) => {
   router.get('/ytplay', tools.ytPLAY);
   router.get('/sshp', tools.ssHP);
   router.get('/sspc', tools.ssPC);
+  router.get('/tiktok-wm', tools.tiktokWm);
+  router.get('/tiktok-nowm', tools.tiktokNoWm);
   // router.post('/upload', tools.fileUpload);
 
   das.use('/api/tools', router);

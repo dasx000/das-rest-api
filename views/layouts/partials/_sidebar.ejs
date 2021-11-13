@@ -194,6 +194,22 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
               >YTPLAY</a
             >
           </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/tools/tiktok-wm?url=https://vt.tiktok.com/ZSej9L4D8/&apikey=<%- apikey %>"
+              >Tiktok Wm</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/tools/tiktok-nowm?url=https://vt.tiktok.com/ZSej9L4D8/&apikey=<%- apikey %>"
+              >Tiktok NoWm</a
+            >
+          </li>
         </ul>
       </div>
     </li>
@@ -253,6 +269,47 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
         </ul>
       </div>
     </li>
+    <!-- START FUN -->
+    <!-- START MENU TOOLS -->
+    <li class="nav-item menu-items">
+      <a
+        class="nav-link"
+        data-toggle="collapse"
+        href="#menu-tools"
+        aria-expanded="false"
+        aria-controls="menu-tools"
+      >
+        <span class="menu-icon">
+          <i class="mdi mdi-content-cut"></i>
+        </span>
+        <span class="menu-title">Tools</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="menu-tools">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/tools/sshp?url=google.com/&apikey=<%- apikey %>"
+            >
+              SSHP
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/tools/sspc?url=google.com/&apikey=<%- apikey %>"
+            >
+              SSPC
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- END MENU TOOLS -->
+
     <li class="nav-item menu-items">
       <a
         class="nav-link"
@@ -296,13 +353,69 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
         </ul>
       </div>
     </li>
+    <!-- END FUN -->
+
+    <!-- START MENU INFORMATION-->
+    <li class="nav-item menu-items">
+      <a
+        class="nav-link"
+        data-toggle="collapse"
+        href="#menu-information"
+        aria-expanded="false"
+        aria-controls="menu-information"
+      >
+        <span class="menu-icon">
+          <i class="mdi mdi-information-outline"></i>
+        </span>
+        <span class="menu-title">Information</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="menu-information">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/information/news?apikey=<%- apikey %>"
+              >News</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/information/kbbi?apikey=<%- apikey %>&q=buaya"
+              >Kbbi</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/information/kbbi2?apikey=<%- apikey %>&q=buaya"
+              >Kbbi2</a
+            >
+          </li>
+        </ul>
+      </div>
+    </li>
     <!-- END MENU API -->
     <!-- START Contact ME -->
     <li class="nav-item nav-category">
       <span class="nav-link">Contact Me</span>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="https://wa.me/15676666644">
+      <a
+        class="nav-link"
+        href="https://wa.me/15676666644?text=sewa+bot"
+        target="blank"
+      >
+        <span class="menu-icon"> <i class="mdi mdi-whatsapp"></i></span>
+        <span class="menu-title">Sewa bot? PM</span>
+      </a>
+    </li>
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="https://wa.me/15676666644" target="blank">
         <span class="menu-icon"> <i class="mdi mdi-whatsapp"></i></span>
         <span class="menu-title">Whatsapp</span>
       </a>

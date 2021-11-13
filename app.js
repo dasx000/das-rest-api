@@ -88,8 +88,14 @@ das.use(
 // res.json({ message: 'haii :)' });
 das.get('/', async function (req, res) {
   const visitor = await runVisitor();
-  res.json({ visitors: visitor });
-  // Storing the records from the Visitor table
+
+  const wiki = require('wikijs').default;
+
+  wiki()
+    .page('mawar')
+
+    .then(console.log); // Bruce Wayne
+  // res.json({ visitors: visitor });
 });
 // res.json({ message: 'haii :)' });
 das.get('/tes', async function (req, res) {
@@ -124,6 +130,7 @@ require('./app/routes/admin.route')(das);
 require('./app/routes/member.route')(das);
 require('./app/routes/blog.route')(das);
 require('./app/routes/fun.route')(das);
+require('./app/routes/information.route')(das);
 das.use('/auth', authRouters);
 
 // LISTEN
