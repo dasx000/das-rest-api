@@ -47,6 +47,8 @@
     "passport": "^0.5.0",
     "passport-local": "^1.0.0",
     "password": "^0.1.1",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
     "yt-search": "^2.10.2",
     "ytdl-core": "^4.9.1"
   }

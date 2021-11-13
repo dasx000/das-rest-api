@@ -101,7 +101,7 @@
 
 /* border auth */
 .auth-area {
-  border-radius: 15px !important;
+  border-radius: 15px;
 }
 
 /* recaptcha-display */
@@ -112,4 +112,9 @@
 
 form input#disabledInput {
   background-color: #000000;
+}
+
+/* 404 */
+.error-404 {
+  background-image: linear-gradient(-40deg, red, yellow);
 }

@@ -1,5 +1,5 @@
 const db = require('../app/models/');
-const url = db.url2;
+const url = db.url;
 
 const connectMongoDb = () => {
   db.mongoose

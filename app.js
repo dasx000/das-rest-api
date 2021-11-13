@@ -93,8 +93,10 @@ das.get('/', async function (req, res) {
 });
 // res.json({ message: 'haii :)' });
 das.get('/tes', async function (req, res) {
-  const visitor = await runVisitor();
-  res.json({ visitors: visitor });
+  res.render('tes', {
+    title: 'TES',
+    layout: 'layouts/main',
+  });
   // Storing the records from the Visitor table
 });
 
@@ -126,7 +128,11 @@ das.use('/auth', authRouters);
 
 // LISTEN
 
-console.log(__dirname);
+das.use((req, res, next) => {
+  res.status(404).render('error-404', {
+    layout: false,
+  });
+});
 
 das.listen(port, () => {
   console.log(`Server started on PORT ${port}`);

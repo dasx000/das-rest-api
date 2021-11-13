@@ -153,7 +153,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
     <li class="nav-item nav-category">
       <span class="nav-link">API</span>
     </li>
-
+    <!-- START DOWNLOADER  -->
     <li class="nav-item menu-items">
       <a
         class="nav-link"
@@ -249,6 +249,49 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             >
               Cari Surah
             </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item menu-items">
+      <a
+        class="nav-link"
+        data-toggle="collapse"
+        href="#menu-fun"
+        aria-expanded="false"
+        aria-controls="menu-fun"
+      >
+        <span class="menu-icon">
+          <i class="mdi mdi-cube-outline"></i>
+        </span>
+        <span class="menu-title">FUN</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="menu-fun">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/fun/simi?q=hai&apikey=<%- apikey %>"
+              >Simi</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/fun/anime-quotes?apikey=<%- apikey %>"
+              >Anime Quotes</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/fun/trending-twitter?location=indonesia&apikey=<%- apikey %>"
+              >Trending Twitter</a
+            >
           </li>
         </ul>
       </div>
