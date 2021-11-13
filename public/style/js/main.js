@@ -1,8 +1,3 @@
-function waktu() {
-  const target = document.querySelector('.time-now');
-  setTimeout('waktu()', 500);
-  target.innerHTML = detik;
-}
 $(document).ready(function () {
   // DataTable
   $('#data-table1').DataTable();

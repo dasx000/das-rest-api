@@ -2,7 +2,7 @@ const { data, fail, invalidKey } = require('../../message');
 const { scihub } = require('../../lib/scihub');
 const axios = require('axios');
 const { ytMp3, ytMp4, ytPlay } = require('../../lib/youtube');
-const { shortUrl } = require('../../lib/tools');
+const { shortUrl, translate } = require('../../lib/tools');
 const {
   getApikey,
   getRole,
@@ -195,6 +195,22 @@ exports.tiktokNoWm = async (req, res) => {
     .then(async (result) => {
       const output = await shortUrl(result.result.nowatermark);
       res.send(data(output));
+    })
+    .catch((err) => {
+      res.send(fail(err.message));
+    });
+};
+
+// translate
+exports.translateLang = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
+  const text = req.query.text;
+  const lang = req.params.lang;
+  if (!text) return res.send(fail('text tidak boleh kosong'));
+  await translate(text, lang)
+    .then(async (result) => {
+      res.send(data({ To: lang, result }));
     })
     .catch((err) => {
       res.send(fail(err.message));

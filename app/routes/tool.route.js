@@ -11,6 +11,7 @@ module.exports = (das) => {
   router.get('/sspc', tools.ssPC);
   router.get('/tiktok-wm', tools.tiktokWm);
   router.get('/tiktok-nowm', tools.tiktokNoWm);
+  router.get('/translate/:lang', tools.translateLang);
   // router.post('/upload', tools.fileUpload);
 
   das.use('/api/tools', router);

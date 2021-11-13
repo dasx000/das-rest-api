@@ -118,3 +118,13 @@ form input#disabledInput {
 .error-404 {
   background-image: linear-gradient(-40deg, red, yellow);
 }
+
+/* dashboard */
+.stretch-card {
+  transition: all 0.5s ease;
+}
+.stretch-card:hover .card {
+  border: 1px solid #666666;
+}
+
+/* dashboard */

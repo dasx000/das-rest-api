@@ -291,6 +291,15 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
+              href="/api/tools/translate/id?text=what+is+your+name+&apikey=<%- apikey %>"
+            >
+              Google Translate
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
               href="/api/tools/sshp?url=google.com/&apikey=<%- apikey %>"
             >
               SSHP
@@ -378,6 +387,39 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
               class="nav-link"
               href="/api/information/news?apikey=<%- apikey %>"
               >News</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/information/kode-post?apikey=<%- apikey %>&q=34765"
+              >Kode Post</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/information/lambang-provinsi?apikey=<%- apikey %>"
+              >Lambang Provinsi</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/information/harga-komoditas?apikey=<%- apikey %>"
+              >Harga Pangan</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
+              href="/api/information/cari-sekolah?q=sman+1+kasui&apikey=<%- apikey %>"
+              >Cari Sekolah</a
             >
           </li>
           <li class="nav-item">
