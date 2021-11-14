@@ -8,6 +8,7 @@ const cors = require('cors');
 const connectMongoDb = require('./database/connect');
 const methodOverride = require('method-override');
 const fileUpload = require('express-fileupload');
+const db = require('./app/models/');
 // OTENTIKASI USER
 const passport = require('passport');
 const flash = require('connect-flash');
@@ -30,8 +31,6 @@ const compression = require('compression');
 das.set('trust proxy', 1);
 // connect to database mongodb
 const dbConnection = connectMongoDb();
-const counters = {};
-// const counters = dbConnection.db().collection('counters');
 das.use(compression());
 das.set('view engine', 'ejs');
 das.use(expressLayout);
@@ -58,11 +57,7 @@ das.use(
     }),
   })
 );
-das.use(
-  expressVisitorCounter({
-    hook: (counterId) => (counters[counterId] = (counters[counterId] || 0) + 1),
-  })
-);
+
 das.use(cookieParser());
 
 das.use(passport.initialize());
@@ -86,19 +81,19 @@ das.use(
 );
 
 // res.json({ message: 'haii :)' });
-das.get('/', async function (req, res) {
+das.get('/', async function (req, res, next) {
   const visitor = await runVisitor();
-  // console.log(req.baseUrl);
-  res.json({ visitors: req.hostname + req.originalUrl });
+  console.log(req.host);
+  res.json(req.host);
 });
 // res.json({ message: 'haii :)' });
-das.get('/tes', async function (req, res) {
-  res.render('tes', {
-    title: 'TES',
-    layout: 'layouts/main',
-  });
-  // Storing the records from the Visitor table
-});
+// das.get('/tes', async function (req, res) {
+//   res.render('tes', {
+//     title: 'TES',
+//     layout: 'layouts/main',
+//   });
+// Storing the records from the Visitor table
+// });
 
 das.get('/p', (req, res) => {
   res.render('index', { layout: false });

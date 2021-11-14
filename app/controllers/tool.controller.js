@@ -259,12 +259,10 @@ exports.emails = async (req, res) => {
   q = q.toLowerCase();
 
   // HOSTNAME
-  let hostname = '';
-  if (req.hostname.includes('127.0.0.1')) {
-    hostname = 'http://127.0.0.1:' + port;
-  } else {
-    hostname = 'https://' + req.hostname;
-  }
+  let hostname = req.hostname.includes('127.0.0.1')
+    ? '127.0.0.1:' + port
+    : req.hostname;
+
   const cek = await db.emails.findOne({ name: q });
   console.log(cek);
   if (cek == null) {
@@ -281,7 +279,7 @@ exports.emails = async (req, res) => {
             {
               name: result.name,
               email: result.email,
-              cek_inbox: `${hostname}/api/tools/temp-mail?apikey=${apikey}&name=${q}`,
+              cek_inbox: `${req.protocol}://${hostname}/api/tools/temp-mail?apikey=${apikey}&name=${q}`,
             },
             'Email akan dihapus otomatis dalam 3 hari!. Harap gunakan dengan bijak!'
           )
@@ -296,7 +294,7 @@ exports.emails = async (req, res) => {
         {
           name: cek.name,
           email: cek.email,
-          cek_inbox: `${hostname}/api/tools/temp-mail?apikey=${apikey}&name=${q}`,
+          cek_inbox: `${req.protocol}://${hostname}/api/tools/temp-mail?apikey=${apikey}&name=${q}`,
         },
         'Email akan dihapus otomatis dalam 3 hari!. Harap gunakan dengan bijak!'
       )
