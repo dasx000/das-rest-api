@@ -46,6 +46,17 @@ async function cekKey(apikey) {
     return db.apikey;
   }
 }
+async function isPremium(apikey) {
+  let db = await Users.findOne({ apikey: apikey });
+  // console.log(db);
+  if (db === null) {
+    return 'apikey tidak valid. Harap login untuk mendapatkan apikey';
+  } else if (db.role != 1 && db.role != 2) {
+    return 'khusus user premium. Hubungi owner untuk uji coba gratis!';
+  } else {
+    return true;
+  }
+}
 // module.exports.cekKey = cekKey;
 
 async function visitors() {
@@ -108,4 +119,5 @@ module.exports = {
   getRole,
   checkEmail,
   getApikey,
+  isPremium,
 };

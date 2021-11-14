@@ -8,6 +8,7 @@ const {
   getRole,
   findAllUser,
   cekKey,
+  isPremium,
 } = require('../../database/function');
 const { imgbb } = require('../../lib/tools');
 const { TiktokDownloader } = require('./../../lib/tiktok');
@@ -220,6 +221,9 @@ exports.translateLang = async (req, res) => {
 
 //TEMP MAIL
 exports.tempMail = async (req, res) => {
+  const cekApikey = await isPremium(req.query.apikey);
+
+  if (cekApikey != true) return res.send(fail(cekApikey));
   const q = req.query.name;
   axios
     .get(
@@ -238,13 +242,24 @@ exports.tempMail = async (req, res) => {
     });
 };
 exports.emails = async (req, res) => {
+  const cekApikey = await isPremium(req.query.apikey);
+  console.log(cekApikey);
+  if (cekApikey != true) return res.send(fail(cekApikey));
+
   let q = req.query.name;
+  let apikey = req.query.apikey;
   q = q.toLowerCase();
   if (!q) return res.send(fail('name tidak boleh kosong'));
   const newEmail = new db.emails({
     name: q,
     email: `i2v6m.dasx000.${q}@inbox.testmail.app`,
-    cek_inbox: 'http://' + req.hostname + '/api/tools/temp-mail?name=' + q,
+    cek_inbox:
+      'http://' +
+      req.hostname +
+      '/api/tools/temp-mail?apikey=' +
+      apikey +
+      'name=' +
+      q,
   });
   newEmail
     .save(newEmail)
