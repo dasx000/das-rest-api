@@ -291,6 +291,15 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
+              href="/api/tools/emails?apikey=<%- apikey %>&name=your-name"
+            >
+              Temp Mail
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
               href="/api/tools/translate/id?text=what+is+your+name+&apikey=<%- apikey %>"
             >
               Google Translate

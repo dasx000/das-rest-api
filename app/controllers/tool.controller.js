@@ -1,3 +1,4 @@
+const port = 8000;
 const { data, fail, invalidKey } = require('../../message');
 const { scihub } = require('../../lib/scihub');
 const axios = require('axios');
@@ -222,20 +223,26 @@ exports.translateLang = async (req, res) => {
 // cek email masuk
 exports.tempMail = async (req, res) => {
   const cekApikey = await isPremium(req.query.apikey);
-
   if (cekApikey != true) return res.send(fail(cekApikey));
-  const q = req.query.name;
+  let q = req.query.name;
+  q = q.toLowerCase();
+  //=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
   axios
     .get(
-      `https://api.testmail.app/api/json?tag_prefix=dasx000&apikey=${config.apikeyTestmail}&tag=${q}&namespace=${config.namespaceTestmail}&pretty=true`
+      `https://api.testmail.app/api/json?apikey=${config.apikeyTestmail}&tag=${q}&namespace=${config.namespaceTestmail}&pretty=true`
     )
-    .then((result) => {
-      res.send(
-        data(
-          result.data,
-          'Refresh apabila pesan belum masuk. Harap gunakan dengan bijak!'
-        )
-      );
+    .then((resu) => {
+      let { result, message, count, limit, offset, emails } = resu.data;
+      if (result == 'success') {
+        res.send(
+          data(
+            { count, limit, offset, inbox_email: emails },
+            'Refresh apabila pesan belum masuk. Harap gunakan dengan bijak!'
+          )
+        );
+      } else {
+        res.send(fail(message));
+      }
     })
     .catch((err) => {
       res.send(fail(err.message));
@@ -246,32 +253,53 @@ exports.emails = async (req, res) => {
   const cekApikey = await isPremium(req.query.apikey);
   console.log(cekApikey);
   if (cekApikey != true) return res.send(fail(cekApikey));
-
   let q = req.query.name;
+  if (!q) return res.send(fail('name tidak boleh kosong'));
   let apikey = req.query.apikey;
   q = q.toLowerCase();
-  if (!q) return res.send(fail('name tidak boleh kosong'));
-  const newEmail = new db.emails({
-    name: q,
-    email: `i2v6m.dasx000.${q}@inbox.testmail.app`,
-    cek_inbox: `https://${req.hostname}/api/tools/temp-mail?apikey=${apikey}&name=${q}`,
-  });
-  newEmail
-    .save(newEmail)
-    .then((result) => {
-      console.log(result);
-      res.send(
-        data(
-          {
-            name: result.name,
-            email: result.email,
-            cek_inbox: result.cek_inbox,
-          },
-          'Harap gunakan dengan bijak!'
-        )
-      );
-    })
-    .catch((err) => {
-      res.send(fail(err.message));
+
+  // HOSTNAME
+  let hostname = '';
+  if (req.hostname.includes('127.0.0.1')) {
+    hostname = 'http://127.0.0.1:' + port;
+  } else {
+    hostname = 'https://' + req.hostname;
+  }
+  const cek = await db.emails.findOne({ name: q });
+  console.log(cek);
+  if (cek == null) {
+    const newEmail = new db.emails({
+      name: q,
+      email: `i2v6m.${q}@inbox.testmail.app`,
     });
+    newEmail
+      .save(newEmail)
+      .then((result) => {
+        console.log(result);
+        res.send(
+          data(
+            {
+              name: result.name,
+              email: result.email,
+              cek_inbox: `${hostname}/api/tools/temp-mail?apikey=${apikey}&name=${q}`,
+            },
+            'Email akan dihapus otomatis dalam 3 hari!. Harap gunakan dengan bijak!'
+          )
+        );
+      })
+      .catch((err) => {
+        res.send(fail(err.message));
+      });
+  } else {
+    res.send(
+      data(
+        {
+          name: cek.name,
+          email: cek.email,
+          cek_inbox: `${hostname}/api/tools/temp-mail?apikey=${apikey}&name=${q}`,
+        },
+        'Email akan dihapus otomatis dalam 3 hari!. Harap gunakan dengan bijak!'
+      )
+    );
+  }
 };

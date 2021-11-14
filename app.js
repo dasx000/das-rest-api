@@ -1,5 +1,3 @@
-let hits = 0;
-
 const express = require('express');
 const fs = require('fs');
 const das = express();
