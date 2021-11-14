@@ -1,3 +1,5 @@
+let hits = 0;
+
 const express = require('express');
 const fs = require('fs');
 const das = express();
@@ -88,8 +90,8 @@ das.use(
 // res.json({ message: 'haii :)' });
 das.get('/', async function (req, res) {
   const visitor = await runVisitor();
-
-  res.json({ visitors: visitor });
+  // console.log(req.baseUrl);
+  res.json({ visitors: req.hostname + req.originalUrl });
 });
 // res.json({ message: 'haii :)' });
 das.get('/tes', async function (req, res) {

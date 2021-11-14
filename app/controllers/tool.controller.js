@@ -11,7 +11,8 @@ const {
 } = require('../../database/function');
 const { imgbb } = require('../../lib/tools');
 const { TiktokDownloader } = require('./../../lib/tiktok');
-// 0857a2cccddb46eaaa9c04c51e53f532
+let config = require('../../config/config');
+const db = require('../models');
 ////////////////////////////////////////////////////////////////////////////////////////
 
 exports.sci = async (req, res) => {
@@ -215,4 +216,34 @@ exports.translateLang = async (req, res) => {
     .catch((err) => {
       res.send(fail(err.message));
     });
+};
+
+//TEMP MAIL
+exports.tempMail = async (req, res) => {
+  const q = req.query.q;
+  axios
+    .get(
+      `https://api.testmail.app/api/json?tag_prefix=dasx000&apikey=${config.apikeyTestmail}&tag=${q}&namespace=${config.namespaceTestmail}&pretty=true`
+    )
+    .then((result) => {
+      res.send(data(result.data, 'Harap gunakan dengan bijak!'));
+    })
+    .catch((err) => {
+      res.send(fail(err.message));
+    });
+};
+exports.emails = async (req, res) => {
+  let q = req.query.name;
+  q = q.toLowerCase();
+  if (!q) return res.send(fail('name tidak boleh kosong'));
+  const newEmail = new db.emails({
+    name: q,
+    email: `i2v6m.dasx000.${q}@inbox.testmail.app`,
+  });
+
+  then((result) => {
+    res.send(data(result.data, 'Harap gunakan dengan bijak!'));
+  }).catch((err) => {
+    res.send(fail(err.message));
+  });
 };

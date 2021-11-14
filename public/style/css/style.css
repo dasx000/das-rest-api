@@ -125,6 +125,7 @@ form input#disabledInput {
 }
 .stretch-card:hover .card {
   border: 1px solid #666666;
+  /* color: #34685C; */
 }
 
 /* dashboard */
