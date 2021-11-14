@@ -219,7 +219,7 @@ exports.translateLang = async (req, res) => {
     });
 };
 
-//TEMP MAIL
+// cek email masuk
 exports.tempMail = async (req, res) => {
   const cekApikey = await isPremium(req.query.apikey);
 
@@ -241,6 +241,7 @@ exports.tempMail = async (req, res) => {
       res.send(fail(err.message));
     });
 };
+// create email
 exports.emails = async (req, res) => {
   const cekApikey = await isPremium(req.query.apikey);
   console.log(cekApikey);
@@ -253,13 +254,7 @@ exports.emails = async (req, res) => {
   const newEmail = new db.emails({
     name: q,
     email: `i2v6m.dasx000.${q}@inbox.testmail.app`,
-    cek_inbox:
-      'https://' +
-      req.hostname +
-      '/api/tools/temp-mail?apikey=' +
-      apikey +
-      'name=' +
-      q,
+    cek_inbox: `https://${req.hostname}/api/tools/temp-mail?apikey=${apikey}&name=${q}`,
   });
   newEmail
     .save(newEmail)
