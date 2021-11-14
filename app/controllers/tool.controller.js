@@ -254,7 +254,7 @@ exports.emails = async (req, res) => {
     name: q,
     email: `i2v6m.dasx000.${q}@inbox.testmail.app`,
     cek_inbox:
-      'http://' +
+      'https://' +
       req.hostname +
       '/api/tools/temp-mail?apikey=' +
       apikey +
