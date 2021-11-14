@@ -220,13 +220,18 @@ exports.translateLang = async (req, res) => {
 
 //TEMP MAIL
 exports.tempMail = async (req, res) => {
-  const q = req.query.q;
+  const q = req.query.name;
   axios
     .get(
       `https://api.testmail.app/api/json?tag_prefix=dasx000&apikey=${config.apikeyTestmail}&tag=${q}&namespace=${config.namespaceTestmail}&pretty=true`
     )
     .then((result) => {
-      res.send(data(result.data, 'Harap gunakan dengan bijak!'));
+      res.send(
+        data(
+          result.data,
+          'Refresh apabila pesan belum masuk. Harap gunakan dengan bijak!'
+        )
+      );
     })
     .catch((err) => {
       res.send(fail(err.message));
@@ -239,11 +244,24 @@ exports.emails = async (req, res) => {
   const newEmail = new db.emails({
     name: q,
     email: `i2v6m.dasx000.${q}@inbox.testmail.app`,
+    cek_inbox: 'http://' + req.hostname + '/api/tools/temp-mail?name=' + q,
   });
-
-  then((result) => {
-    res.send(data(result.data, 'Harap gunakan dengan bijak!'));
-  }).catch((err) => {
-    res.send(fail(err.message));
-  });
+  newEmail
+    .save(newEmail)
+    .then((result) => {
+      console.log(result);
+      res.send(
+        data(
+          {
+            name: result.name,
+            email: result.email,
+            cek_inbox: result.cek_inbox,
+          },
+          'Harap gunakan dengan bijak!'
+        )
+      );
+    })
+    .catch((err) => {
+      res.send(fail(err.message));
+    });
 };
