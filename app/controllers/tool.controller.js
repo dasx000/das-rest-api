@@ -1,17 +1,34 @@
 const port = 8000;
+const fs = require('fs');
+const ms = require('ms');
 const { data, fail, invalidKey } = require('../../message');
 const { scihub } = require('../../lib/scihub');
 const axios = require('axios');
 const { ytMp3, ytMp4, ytPlay } = require('../../lib/youtube');
-const { shortUrl, translate } = require('../../lib/tools');
+const {
+  RemoveBgResult,
+  RemoveBgError,
+  removeBackgroundFromImageUrl,
+} = require('remove.bg');
+const {
+  translate,
+  imgbbFile,
+  sleep,
+  color,
+  createSerial,
+  shortUrl,
+  uploader,
+  isUrl,
+  imgbb,
+} = require('../../lib/tools');
 const {
   getApikey,
   getRole,
   findAllUser,
   cekKey,
+  checkExpiredEmail,
   isPremium,
 } = require('../../database/function');
-const { imgbb } = require('../../lib/tools');
 const { TiktokDownloader } = require('./../../lib/tiktok');
 let config = require('../../config/config');
 const db = require('../models');
@@ -251,7 +268,6 @@ exports.tempMail = async (req, res) => {
 // create email
 exports.emails = async (req, res) => {
   const cekApikey = await isPremium(req.query.apikey);
-  console.log(cekApikey);
   if (cekApikey != true) return res.send(fail(cekApikey));
   let q = req.query.name;
   if (!q) return res.send(fail('name tidak boleh kosong'));
@@ -262,18 +278,18 @@ exports.emails = async (req, res) => {
   let hostname = req.hostname.includes('127.0.0.1')
     ? '127.0.0.1:' + port
     : req.hostname;
-
+  // cek expired
+  await checkExpiredEmail(db.emails);
   const cek = await db.emails.findOne({ name: q });
-  console.log(cek);
   if (cek == null) {
     const newEmail = new db.emails({
       name: q,
       email: `i2v6m.${q}@inbox.testmail.app`,
+      expired: Date.now() + ms('3d'),
     });
     newEmail
       .save(newEmail)
-      .then((result) => {
-        console.log(result);
+      .then(async (result) => {
         res.send(
           data(
             {
@@ -300,4 +316,34 @@ exports.emails = async (req, res) => {
       )
     );
   }
+};
+
+//=_=_ =_=_ =_=_ =_=_ =_=_ =_=_ =_=_ =_=_=_=_ =_=_ =_=_ =_=_=_=_
+exports.removeBg = async (req, res) => {
+  let key =
+    config.removeBgKey[Math.floor(Math.random() * config.removeBgKey.length)];
+  const url = req.query.url;
+  const outputFile = __dirname + `/../../temp/removebg.png`;
+
+  removeBackgroundFromImageUrl({
+    url,
+    apiKey: key,
+    size: 'regular',
+    type: 'person',
+    outputFile,
+  })
+    .then(async (result) => {
+      await imgbbFile(outputFile)
+        .then(async (result) => {
+          res.send(data(result));
+          await sleep(2000);
+          fs.unlinkSync(outputFile);
+        })
+        .catch((err) => {
+          res.send(fail(err.message));
+        });
+    })
+    .catch((errors) => {
+      console.log(JSON.stringify(errors));
+    });
 };

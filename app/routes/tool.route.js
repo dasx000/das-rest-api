@@ -14,6 +14,7 @@ module.exports = (das) => {
   router.get('/translate/:lang', tools.translateLang);
   router.get('/temp-mail', tools.tempMail);
   router.get('/emails', tools.emails);
+  router.get('/removebg', tools.removeBg);
   // router.post('/upload', tools.fileUpload);
 
   das.use('/api/tools', router);

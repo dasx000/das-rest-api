@@ -18,10 +18,14 @@
       href="/corona/assets/vendors/css/vendor.bundle.base.css"
     />
     <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
+    <!--  sweet alertt-->
+    <link
+      href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css"
+      rel="stylesheet"
+    />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+    <!--  sweet alertt-->
     <!-- Layout styles -->
     <!-- MY STYLE -->
     <link rel="stylesheet" href="/style/css/style.css" />
@@ -34,6 +38,10 @@
       <div class="container-fluid page-body-wrapper full-page-wrapper">
         <div class="row w-100 m-0">
           <div
+            id="flash-data"
+            data-sm="<%-success_msg%>"
+            data-errormsg="<%-error_msg%>"
+            data-error="<%-error%>"
             class="
               content-wrapper
               full-page-wrapper
@@ -46,7 +54,7 @@
             <div class="card col-lg-4 mx-auto auth-area">
               <div class="card-body px-5 py-5">
                 <h3 class="card-title text-left mb-3">Register</h3>
-                <%- include('layouts/msg') %> <%- include('layouts/errors') %>
+
                 <form action="/auth/register" method="post">
                   <div class="form-group">
                     <label>Email *</label>
@@ -132,6 +140,8 @@
     <script src="/corona/assets/js/misc.js"></script>
     <script src="/corona/assets/js/settings.js"></script>
     <script src="/corona/assets/js/todolist.js"></script>
+    <script src="/style/vendor/jquery/jquery.3.6.0.js"></script>
+    <script src="/style/js/main.js"></script>
     <!-- endinject -->
   </body>
 </html>

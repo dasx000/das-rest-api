@@ -110,7 +110,31 @@ const runVisitor = async () => {
   }
 };
 
+// cekexpiredemail
+const checkExpiredEmail = async (collection) => {
+  setInterval(async () => {
+    await collection
+      .find()
+      .then((result) => {
+        if (result.length > 0) {
+          result.forEach(async (i) => {
+            let date = Date.now();
+            let expired = i.expired;
+            if (expired < date) {
+              console.log('success delete email');
+              await collection.findByIdAndDelete(i._id);
+            }
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, 1000);
+};
+
 module.exports = {
+  checkExpiredEmail,
   findAllUser,
   cekKey,
   addUser,

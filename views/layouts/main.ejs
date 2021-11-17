@@ -13,6 +13,7 @@ user.apikey: 'login-first'%>
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title><%- title %></title>
+
     <!-- plugins:css -->
     <link
       rel="stylesheet"
@@ -37,6 +38,13 @@ user.apikey: 'login-first'%>
       href="/corona/assets/vendors/owl-carousel-2/owl.carousel.min.css"
     />
 
+    <!--  sweet alertt-->
+    <link
+      href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css"
+      rel="stylesheet"
+    />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <!--  sweet alertt-->
     <link
       rel="stylesheet"
       type="text/css"
@@ -68,12 +76,16 @@ user.apikey: 'login-first'%>
         <!-- partial -->
         <div class="main-panel">
           <!-- INCLUDE BODY -->
-          <div class="content-wrapper">
-            <center><%- include('msg') %> <%- include('errors') %></center>
+          <div
+            id="flash-data"
+            class="content-wrapper"
+            data-sm="<%-success_msg%>"
+            data-errormsg="<%-error_msg%>"
+            data-error="<%-error%>"
+          >
+            <!-- INCLUDE BODY -->
             <%- body %>
           </div>
-          <!-- INCLUDE BODY -->
-
           <!-- partial:partials/_footer.html -->
 
           <%- include('partials/_footer') %>
@@ -113,7 +125,7 @@ user.apikey: 'login-first'%>
       charset="utf8"
       src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"
     ></script>
-    <!-- javascript -->
+
     <script src="/style/js/main.js"></script>
   </body>
 </html>

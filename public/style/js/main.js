@@ -1,4 +1,21 @@
 $(document).ready(function () {
+  // flash message
+
+  let success_msg = $('#flash-data').data('sm');
+  let error_msg = $('#flash-data').data('errormsg');
+  let error = $('#flash-data').data('error');
+
+  if (success_msg != '') {
+    Swal.fire('Nice!', success_msg, 'success');
+  }
+
+  if (error_msg != '') {
+    Swal.fire('Ups!', error_msg, 'warning');
+  }
+
+  if (error != '') {
+    Swal.fire('Error!', error, 'error');
+  }
   // DataTable
   $('#data-table1').DataTable();
 
@@ -14,6 +31,28 @@ $(document).ready(function () {
       { data: 'ipk' },
       { data: 'sks_lulus' },
     ],
+  });
+
+  // aler
+
+  $('form#form-delete-data').on('submit', function (event) {
+    event.preventDefault(); // Stop normal form submitting
+    // Then include your code for showing the alert
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        document.querySelector('form#form-delete-data').submit();
+        // Swal.fire('Deleted!', 'Your data has been deleted.', 'success');
+      }
+    });
   });
 });
 

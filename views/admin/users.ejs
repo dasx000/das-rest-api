@@ -24,21 +24,18 @@
           <td>
             <form action="/api/admin/edit_user" method="post" class="d-inline">
               <input type="hidden" name="id" value="<%- users[i].id %>" />
-              <button type="submit" class="btn btn-primary">Edit</button>
+              <button type="submit" class="btn btn-outline-info">Edit</button>
             </form>
+            <!-- delete -->
             <form
+              id="form-delete-data"
               action="/api/admin/list_user/delete?_method=DELETE"
               method="POST"
               class="d-inline"
             >
               <input type="hidden" name="id" value="<%- users[i].id %>" />
 
-              <button
-                type="submit"
-                class="btn btn-danger"
-                id="confirm-delete-user"
-                onclick="return confirm('yakin ingin menghapus?')"
-              >
+              <button type="submit" class="btn btn-outline-danger">
                 Delete
               </button>
             </form>

@@ -25,7 +25,6 @@ exports.list_user = async (req, res) => {
 };
 
 exports.deleteUser = (req, res) => {
-  console.log(req.body.id);
   Users.findByIdAndRemove(req.body.id)
     .then((result) => {
       console.log(result);

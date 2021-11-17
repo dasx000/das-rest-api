@@ -10,3 +10,7 @@ form input:focus {
 }
 
 /* /////////////////////////////////// */
+.display .btn {
+  padding: 5px !important;
+  text-align: center !important;
+}
