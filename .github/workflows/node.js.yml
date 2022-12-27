@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: 22
           script: |
-            cd /root/rest-api
+            cd /www/wwwroot/rest-api
             git pull origin master
             git status
             npm install
