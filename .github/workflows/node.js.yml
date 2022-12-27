@@ -18,6 +18,8 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
+          repository: dasx000/https://github.com/dasx000/first-RESTAPI.git
+          token: ${{ secrets.PAT_TOKEN }}
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
