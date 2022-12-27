@@ -98,7 +98,7 @@ das.get('/', async function (req, res, next) {
 das.get('/p', (req, res) => {
   res.render('index', { layout: false });
 });
-das.get('/api', async (req, res) => {
+das.get('/docs', async (req, res) => {
   const visitor = await runVisitor();
   let getUser = await findAllUser();
   res.render('dashboard', {
