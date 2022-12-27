@@ -7,18 +7,12 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
 <!-- FUNCTION JS -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <div
-    class="
-      sidebar-brand-wrapper
-      d-none d-lg-flex
-      align-items-center
-      justify-content-center
-      fixed-top
-    "
+    class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
   >
-    <a class="sidebar-brand brand-logo" href="/api"
+    <a class="sidebar-brand brand-logo" href="/docs"
       ><img src="/corona/assets/images/logo.svg" alt="logo"
     /></a>
-    <a class="sidebar-brand brand-logo-mini" href="/api"
+    <a class="sidebar-brand brand-logo-mini" href="/docs"
       ><img src="/corona/assets/images/mini-logo.svg" alt="logo"
     /></a>
   </div>
@@ -39,14 +33,13 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
           ><i class="mdi mdi-dots-vertical"></i
         ></a>
         <div
-          class="
-            dropdown-menu dropdown-menu-right
-            sidebar-dropdown
-            preview-list
-          "
+          class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
           aria-labelledby="profile-dropdown"
         >
-          <a href="/api/member/edit_profile" class="dropdown-item preview-item">
+          <a
+            href="/docs/member/edit_profile"
+            class="dropdown-item preview-item"
+          >
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
                 <i class="mdi mdi-settings text-primary"></i>
@@ -114,7 +107,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
       <span class="nav-link">Navigation</span>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="/api">
+      <a class="nav-link" href="/docs">
         <span class="menu-icon">
           <i class="mdi mdi-speedometer"></i>
         </span>
@@ -130,7 +123,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
       <span class="nav-link">Menu Admin</span>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="/api/admin/list_user">
+      <a class="nav-link" href="/docs/admin/list_user">
         <span class="menu-icon">
           <i class="mdi mdi-speedometer"></i>
         </span>
@@ -139,7 +132,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
     </li>
 
     <li class="nav-item menu-items">
-      <a class="nav-link" href="/api/admin/list_students">
+      <a class="nav-link" href="/docs/admin/list_students">
         <span class="menu-icon">
           <i class="mdi mdi-speedometer"></i>
         </span>
@@ -174,7 +167,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/tools/ytmp4?url=https://youtu.be/JmbvEsPk_Ok&apikey=<%- apikey %>"
+              href="/docs/tools/ytmp4?url=https://youtu.be/JmbvEsPk_Ok&apikey=<%- apikey %>"
               >YTMP4</a
             >
           </li>
@@ -182,7 +175,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/tools/ytmp3?url=https://youtu.be/JmbvEsPk_Ok&apikey=<%- apikey %>"
+              href="/docs/tools/ytmp3?url=https://youtu.be/JmbvEsPk_Ok&apikey=<%- apikey %>"
               >YTMP3</a
             >
           </li>
@@ -190,7 +183,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/tools/ytplay?q=javascript&apikey=<%- apikey %>"
+              href="/docs/tools/ytplay?q=javascript&apikey=<%- apikey %>"
               >YTPLAY</a
             >
           </li>
@@ -198,7 +191,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/tools/tiktok-wm?url=https://vt.tiktok.com/ZSej9L4D8/&apikey=<%- apikey %>"
+              href="/docs/tools/tiktok-wm?url=https://vt.tiktok.com/ZSej9L4D8/&apikey=<%- apikey %>"
               >Tiktok Wm</a
             >
           </li>
@@ -206,7 +199,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/tools/tiktok-nowm?url=https://vt.tiktok.com/ZSej9L4D8/&apikey=<%- apikey %>"
+              href="/docs/tools/tiktok-nowm?url=https://vt.tiktok.com/ZSej9L4D8/&apikey=<%- apikey %>"
               >Tiktok NoWm</a
             >
           </li>
@@ -234,7 +227,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/islam/list_surah?apikey=<%- apikey %>"
+              href="/docs/islam/list_surah?apikey=<%- apikey %>"
             >
               List Surah
             </a>
@@ -243,7 +236,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/islam/search_word?q=dzulkarnain&apikey=<%- apikey %>"
+              href="/docs/islam/search_word?q=dzulkarnain&apikey=<%- apikey %>"
             >
               Cari Kata
             </a>
@@ -252,7 +245,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/islam/tafsir_surah?nomor_surah=1&apikey=<%- apikey %>"
+              href="/docs/islam/tafsir_surah?nomor_surah=1&apikey=<%- apikey %>"
             >
               Tafsir Surah
             </a>
@@ -261,7 +254,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/islam/search_surah?nomor_surah=1&apikey=<%- apikey %>"
+              href="/docs/islam/search_surah?nomor_surah=1&apikey=<%- apikey %>"
             >
               Cari Surah
             </a>
@@ -291,7 +284,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/tools/emails?apikey=<%- apikey %>&name=your-name"
+              href="/docs/tools/emails?apikey=<%- apikey %>&name=your-name"
             >
               Temp Mail
             </a>
@@ -300,7 +293,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/tools/translate/id?text=what+is+your+name+&apikey=<%- apikey %>"
+              href="/docs/tools/translate/id?text=what+is+your+name+&apikey=<%- apikey %>"
             >
               Google Translate
             </a>
@@ -309,7 +302,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/tools/sshp?url=google.com/&apikey=<%- apikey %>"
+              href="/docs/tools/sshp?url=google.com/&apikey=<%- apikey %>"
             >
               SSHP
             </a>
@@ -318,7 +311,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/tools/sspc?url=google.com/&apikey=<%- apikey %>"
+              href="/docs/tools/sspc?url=google.com/&apikey=<%- apikey %>"
             >
               SSPC
             </a>
@@ -348,7 +341,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/fun/simi?q=hai&apikey=<%- apikey %>"
+              href="/docs/fun/simi?q=hai&apikey=<%- apikey %>"
               >Simi</a
             >
           </li>
@@ -356,7 +349,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/fun/anime-quotes?apikey=<%- apikey %>"
+              href="/docs/fun/anime-quotes?apikey=<%- apikey %>"
               >Anime Quotes</a
             >
           </li>
@@ -364,7 +357,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/fun/trending-twitter?location=indonesia&apikey=<%- apikey %>"
+              href="/docs/fun/trending-twitter?location=indonesia&apikey=<%- apikey %>"
               >Trending Twitter</a
             >
           </li>
@@ -394,7 +387,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/information/news?apikey=<%- apikey %>"
+              href="/docs/information/news?apikey=<%- apikey %>"
               >News</a
             >
           </li>
@@ -402,7 +395,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/information/kode-post?apikey=<%- apikey %>&q=34765"
+              href="/docs/information/kode-post?apikey=<%- apikey %>&q=34765"
               >Kode Post</a
             >
           </li>
@@ -410,7 +403,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/information/lambang-provinsi?apikey=<%- apikey %>"
+              href="/docs/information/lambang-provinsi?apikey=<%- apikey %>"
               >Lambang Provinsi</a
             >
           </li>
@@ -418,7 +411,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/information/harga-komoditas?apikey=<%- apikey %>"
+              href="/docs/information/harga-komoditas?apikey=<%- apikey %>"
               >Harga Pangan</a
             >
           </li>
@@ -427,7 +420,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/information/cari-sekolah?q=sman+1+kasui&apikey=<%- apikey %>"
+              href="/docs/information/cari-sekolah?q=sman+1+kasui&apikey=<%- apikey %>"
               >Cari Sekolah</a
             >
           </li>
@@ -435,7 +428,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/information/kbbi?apikey=<%- apikey %>&q=buaya"
+              href="/docs/information/kbbi?apikey=<%- apikey %>&q=buaya"
               >Kbbi</a
             >
           </li>
@@ -443,7 +436,7 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
-              href="/api/information/kbbi2?apikey=<%- apikey %>&q=buaya"
+              href="/docs/information/kbbi2?apikey=<%- apikey %>&q=buaya"
               >Kbbi2</a
             >
           </li>

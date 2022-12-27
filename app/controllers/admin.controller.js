@@ -20,7 +20,7 @@ exports.list_user = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.redirect('/api');
+    res.redirect('/docs');
   }
 };
 
@@ -29,12 +29,12 @@ exports.deleteUser = (req, res) => {
     .then((result) => {
       console.log(result);
       req.flash('success_msg', 'Success Delete Data');
-      res.redirect('/api/admin/list_user');
+      res.redirect('/docs/admin/list_user');
     })
     .catch((err) => {
       req.flash('error_msg', 'Error While Delete Data');
       console.log(err.message);
-      res.redirect('/api/admin/list_user');
+      res.redirect('/docs/admin/list_user');
     });
 };
 
@@ -54,7 +54,7 @@ exports.editUser = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.redirect('/api');
+    res.redirect('/docs');
     req.flash('error_msg', 'failed request');
   }
 };
@@ -65,12 +65,12 @@ exports.saveEditUser = (req, res) => {
     .then((result) => {
       // console.log(req.body.id);
       req.flash('success_msg', 'Success update data');
-      res.redirect('/api/admin/list_user');
+      res.redirect('/docs/admin/list_user');
     })
     .catch((err) => {
       req.flash('error_msg', 'Error While Update Data');
       console.log(err.message);
-      res.redirect('/api/admin/list_user');
+      res.redirect('/docs/admin/list_user');
     });
 };
 exports.listStudents = async (req, res) => {
@@ -84,6 +84,6 @@ exports.listStudents = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.redirect('/api');
+    res.redirect('/docs');
   }
 };

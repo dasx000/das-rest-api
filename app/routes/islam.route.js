@@ -8,6 +8,6 @@ module.exports = (das) => {
   router.get('/search_surah', islam.search_surah);
   router.get('/tafsir_surah', islam.tafsir_surah);
 
-  das.use('/api/islam', router);
+  das.use('/docs/islam', router);
 };
 //end of islam.route.js

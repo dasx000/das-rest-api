@@ -9,5 +9,5 @@ module.exports = (das) => {
 
   // router.post('/upload', tools.fileUpload);
 
-  das.use('/api/fun', router);
+  das.use('/docs/fun', router);
 };

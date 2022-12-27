@@ -6,5 +6,5 @@ module.exports = (das) => {
   router.post('/login', users.login);
   router.get('/all', users.findAll);
 
-  das.use('/api/users', router);
+  das.use('/docs/users', router);
 };

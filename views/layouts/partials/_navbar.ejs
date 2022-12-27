@@ -8,14 +8,9 @@ user.apikey: 'login-first'%> <% let name = isUser ? (user.fullName == `` ?
 <nav class="navbar p-0 fixed-top d-flex flex-row">
   <!-- mini logo -->
   <div
-    class="
-      navbar-brand-wrapper
-      d-flex d-lg-none
-      align-items-center
-      justify-content-center
-    "
+    class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
   >
-    <a class="navbar-brand brand-logo-mini" href="/api"
+    <a class="navbar-brand brand-logo-mini" href="/docs"
       ><img src="/corona/assets/images/mini-logo.svg" alt="logo"
     /></a>
   </div>
@@ -119,7 +114,10 @@ user.apikey: 'login-first'%> <% let name = isUser ? (user.fullName == `` ?
         >
           <h6 class="p-3 mb-0">Profile</h6>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item" href="/api/member/edit_profile">
+          <a
+            class="dropdown-item preview-item"
+            href="/docs/member/edit_profile"
+          >
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
                 <i class="mdi mdi-settings text-success"></i>

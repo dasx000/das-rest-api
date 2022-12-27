@@ -10,5 +10,5 @@ module.exports = (das) => {
   router.get('/search', students.search);
   router.get('/id/:id', students.findById);
 
-  das.use('/api/students', router);
+  das.use('/docs/students', router);
 };

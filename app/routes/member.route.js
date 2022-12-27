@@ -23,5 +23,5 @@ module.exports = (das) => {
   router.get('/edit_profile', member.editProfile);
   router.post('/upload_photo', member.uploadPhoto);
 
-  das.use('/api/member', isAuthenticated, router);
+  das.use('/docs/member', isAuthenticated, router);
 };

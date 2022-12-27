@@ -39,7 +39,7 @@ router.post(
   captchaLogin,
   async (req, res, next) => {
     passport.authenticate('local', {
-      successRedirect: '/api',
+      successRedirect: '/docs',
       failureRedirect: '/auth/login',
       failureFlash: true,
     })(req, res, next);

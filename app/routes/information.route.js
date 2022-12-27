@@ -9,5 +9,5 @@ module.exports = (das) => {
   router.get('/harga-komoditas', information.hargaKomoditas);
   router.get('/cari-sekolah', information.cariSekolah);
 
-  das.use('/api/information', router);
+  das.use('/docs/information', router);
 };

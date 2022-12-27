@@ -17,5 +17,5 @@ module.exports = (das) => {
   router.get('/removebg', tools.removeBg);
   // router.post('/upload', tools.fileUpload);
 
-  das.use('/api/tools', router);
+  das.use('/docs/tools', router);
 };

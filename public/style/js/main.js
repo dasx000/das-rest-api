@@ -20,7 +20,7 @@ $(document).ready(function () {
   $('#data-table1').DataTable();
 
   $('#students-table').DataTable({
-    ajax: '/api/students',
+    ajax: '/docs/students',
     columns: [
       { data: 'nama' },
       { data: 'npm' },
