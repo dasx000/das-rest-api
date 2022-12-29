@@ -110,6 +110,17 @@ das.get('/docs', async (req, res) => {
   });
 });
 
+// request google form
+das.get('/google_form1', async (req, res) => {
+  const nama = req.query.nama;
+  const npm = req.query.npm;
+  const wa = req.query.wa;
+
+  let form = JSON.parse(fs.readFileSync('form.json', 'utf-8'));
+  form.push({ nama, npm, wa });
+  fs.writeFileSync('form.json', JSON.stringify(form));
+});
+
 // menghubungkan router
 require('./app/routes/tool.route')(das);
 require('./app/routes/student.route')(das);

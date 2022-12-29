@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2 start app.js --name api && pm2 save && pm2 startup ubuntu20 && pm2 logs api"
+    "start": "pm2 start app.js --name api && pm2 save && pm2 startup && pm2 logs api"
   },
   "keywords": [
     "rest",
