@@ -128,6 +128,12 @@ das.get('/data_form1', async (req, res) => {
   res.json(form);
   // fs.writeFileSync('form.json', JSON.stringify(form));
 });
+das.get('/hapus/data_form1', async (req, res) => {
+  const id = req.query.id;
+  form.splice(0, 1);
+  res.json(form);
+  // fs.writeFileSync('form.json', JSON.stringify(form));
+});
 
 // menghubungkan router
 require('./app/routes/tool.route')(das);
