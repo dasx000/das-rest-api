@@ -118,6 +118,7 @@ das.get('/google_form1', async (req, res) => {
   const nama = req.query.nama;
   const npm = req.query.npm;
   const wa = req.query.wa;
+  console.log(nama);
   // if (!nama || !npm || !wa) return res.json({ message: 'data tidak lengkap' });
   form.push({ nama: nama, npm: npm, wa: wa });
   fs.writeFileSync('form.json', JSON.stringify(form));
