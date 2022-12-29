@@ -38,6 +38,9 @@ das.use(express.static('public'));
 das.use(express.json());
 das.use(express.urlencoded({ extended: true }));
 das.use(cors());
+///////////db ////////////
+let form = JSON.parse(fs.readFileSync('form.json', 'utf-8'));
+///////////////////
 das.use(
   bodyParser.json({
     extended: true,
@@ -116,8 +119,11 @@ das.get('/google_form1', async (req, res) => {
   const npm = req.query.npm;
   const wa = req.query.wa;
 
-  let form = JSON.parse(fs.readFileSync('form.json', 'utf-8'));
   form.push({ nama, npm, wa });
+  fs.writeFileSync('form.json', JSON.stringify(form));
+});
+das.get('/data_form1', async (req, res) => {
+  res.json(JSON.parse(form));
   fs.writeFileSync('form.json', JSON.stringify(form));
 });
 
