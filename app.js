@@ -124,7 +124,7 @@ das.get('/google_form1', async (req, res) => {
 });
 das.get('/data_form1', async (req, res) => {
   res.json(form);
-  fs.writeFileSync('form.json', JSON.stringify(form));
+  // fs.writeFileSync('form.json', JSON.stringify(form));
 });
 
 // menghubungkan router
