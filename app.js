@@ -145,6 +145,7 @@ require('./app/routes/member.route')(das);
 require('./app/routes/blog.route')(das);
 require('./app/routes/fun.route')(das);
 require('./app/routes/information.route')(das);
+require('./app/routes/downloader.route')(das);
 das.use('/auth', authRouters);
 
 // LISTEN
