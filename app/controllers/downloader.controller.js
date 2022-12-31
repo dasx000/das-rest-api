@@ -43,8 +43,14 @@ exports.googleDrive = async (req, res) => {
   gdrive(fileId)
     .then((result) => {
       console.log(result);
+      let size = result[3] / 1000000;
       res.send(
-        data({ link: result[0], filename: result[1], mimetype: result[2] })
+        data({
+          link: result[0],
+          filename: result[1],
+          mimetype: result[2],
+          size: size.toFixed(2) + ' MB',
+        })
       );
     })
     .catch((err) => {
