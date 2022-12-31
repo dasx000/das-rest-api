@@ -21,7 +21,8 @@ const invalidKey = () => {
   const fail = {
     Owner: 'DASX000',
     status: false,
-    message: 'invalid apikey. Login dahulu untuk mendapatkan apikey!',
+    message:
+      'invalid apikey. Login dahulu untuk mendapatkan apikey!\n\nhttps://api.diky.my.id/auth/login',
   };
   return fail;
 };
