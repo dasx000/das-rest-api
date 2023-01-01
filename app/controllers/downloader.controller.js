@@ -26,6 +26,7 @@ const {
   isPremium,
 } = require('../../database/function');
 const { gdrive } = require('../../lib/google');
+const { instagram } = require('../../lib/scrape');
 let config = require('../../config/config');
 const db = require('../models');
 // =_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
@@ -72,5 +73,22 @@ exports.tiktok = async (req, res) => {
     })
     .catch((err) => {
       res.send(fail(err.message));
+    });
+};
+
+exports.instagram = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
+
+  const url = req.query.url;
+  if (!url) return res.send(fail('url tidak boleh kosong'));
+  await instagram(url)
+    .then(async (result) => {
+      // const result2 = await shortUrl(result.result);
+      console.log(result);
+      res.send(data(result));
+    })
+    .catch((err) => {
+      res.send(fail(err));
     });
 };
