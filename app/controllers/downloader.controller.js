@@ -109,3 +109,20 @@ exports.fbVideo = async (req, res) => {
       res.send(fail(err));
     });
 };
+
+exports.mediafire = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
+
+  const url = req.query.url;
+  if (!url) return res.send(fail('url tidak boleh kosong'));
+  await mediafire(url)
+    .then(async (result) => {
+      // const result2 = await shortUrl(result.result);
+      console.log(result);
+      res.send(data(result));
+    })
+    .catch((err) => {
+      res.send(fail(err));
+    });
+};
