@@ -26,7 +26,7 @@ const {
   isPremium,
 } = require('../../database/function');
 const { gdrive } = require('../../lib/google');
-const { instagram } = require('../../lib/scrape');
+const { instagram, fbVideo } = require('../../lib/scrape');
 let config = require('../../config/config');
 const db = require('../models');
 // =_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
@@ -83,6 +83,23 @@ exports.instagram = async (req, res) => {
   const url = req.query.url;
   if (!url) return res.send(fail('url tidak boleh kosong'));
   await instagram(url)
+    .then(async (result) => {
+      // const result2 = await shortUrl(result.result);
+      console.log(result);
+      res.send(data(result));
+    })
+    .catch((err) => {
+      res.send(fail(err));
+    });
+};
+
+exports.fbVideo = async (req, res) => {
+  const cekApikey = await cekKey(req.query.apikey);
+  if (!cekApikey) return res.send(invalidKey());
+
+  const url = req.query.url;
+  if (!url) return res.send(fail('url tidak boleh kosong'));
+  await fbVideo(url)
     .then(async (result) => {
       // const result2 = await shortUrl(result.result);
       console.log(result);

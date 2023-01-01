@@ -5,6 +5,7 @@ module.exports = (das) => {
   router.get('/gdrive', downloader.googleDrive);
   router.get('/tiktok', downloader.tiktok);
   router.get('/instagram', downloader.instagram);
+  router.get('/fbvideo', downloader.fbVideo);
 
   // router.post('/upload', tools.fileUpload);
 
