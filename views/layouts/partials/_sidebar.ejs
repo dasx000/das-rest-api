@@ -167,10 +167,19 @@ user.fullName : "your name")%> <% let myrole= isUser ? (user.role == 1 ?
             <a
               target="blank"
               class="nav-link"
+              href="/docs/downloader/scihub?apikey=<%- apikey %>&url=https://doi.org/10.1016/S0925-5214(01)00163-6"
+              >Scihub</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              target="blank"
+              class="nav-link"
               href="/docs/downloader/mediafire?apikey=<%- apikey %>&url=https://www.mediafire.com/file/hmt34ega1oj09fh"
               >Mediafire</a
             >
           </li>
+          <li class="nav-item">
             <a
               target="blank"
               class="nav-link"

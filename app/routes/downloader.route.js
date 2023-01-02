@@ -7,6 +7,7 @@ module.exports = (das) => {
   router.get('/instagram', downloader.instagram);
   router.get('/fbvideo', downloader.fbVideo);
   router.get('/mediafire', downloader.mediafire);
+  router.get('/scihub', downloader.sci);
 
   // router.post('/upload', tools.fileUpload);
 
