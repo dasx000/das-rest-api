@@ -26,7 +26,7 @@ const {
   isPremium,
 } = require('../../database/function');
 const { gdrive } = require('../../lib/google');
-const { instagram, fbVideo } = require('../../lib/scrape');
+const { instagram, fbVideo, mediafire } = require('../../lib/scrape');
 let config = require('../../config/config');
 const db = require('../models');
 // =_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
