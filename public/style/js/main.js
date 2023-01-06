@@ -35,7 +35,7 @@ $(document).ready(function () {
 
   // aler
 
-  $('form#form-delete-data').on('submit', function (event) {
+  $('#form-delete-data').on('submit', function (event) {
     event.preventDefault(); // Stop normal form submitting
     // Then include your code for showing the alert
 
@@ -47,6 +47,7 @@ $(document).ready(function () {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
+      border: '3px solid red', // tambahkan ini
     }).then((result) => {
       if (result.isConfirmed) {
         document.querySelector('form#form-delete-data').submit();
@@ -55,10 +56,13 @@ $(document).ready(function () {
     });
   });
 });
+// end off jquery
 
 // date
 window.setTimeout('waktu()', 1000);
 function waktu() {
+  let target = document.querySelector('.zzz');
+  if (target == null) return;
   var waktu = new Date();
   setTimeout('waktu()', 1000);
   // date
@@ -88,5 +92,5 @@ function waktu() {
   }
   result = jam + ':' + menit + ':' + det;
   // document.getElementById('detik').innerHTML = result;
-  document.querySelector('.zzz').innerHTML = result;
+  target.innerHTML = result;
 }

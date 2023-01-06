@@ -25,11 +25,12 @@ exports.list_user = async (req, res) => {
 };
 
 exports.deleteUser = (req, res) => {
-  Users.findByIdAndRemove(req.body.id)
+  Users.findByIdAndRemove(req.body.idTarget)
     .then((result) => {
       console.log(result);
       req.flash('success_msg', 'Success Delete Data');
       res.redirect('/docs/admin/list_user');
+      console.log(req.body.idTarget);
     })
     .catch((err) => {
       req.flash('error_msg', 'Error While Delete Data');

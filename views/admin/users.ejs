@@ -26,19 +26,6 @@
               <input type="hidden" name="id" value="<%- users[i].id %>" />
               <button type="submit" class="btn btn-outline-info">Edit</button>
             </form>
-            <!-- delete -->
-            <form
-              id="form-delete-data"
-              action="/docs/admin/list_user/delete?_method=DELETE"
-              method="POST"
-              class="d-inline"
-            >
-              <input type="hidden" name="id" value="<%- users[i].id %>" />
-
-              <button type="submit" class="btn btn-outline-danger">
-                Delete
-              </button>
-            </form>
           </td>
         </tr>
         <% }%>

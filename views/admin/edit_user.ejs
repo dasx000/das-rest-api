@@ -1,7 +1,3 @@
-<center>
-  <%- include('../layouts/msg') %> <%- include('../layouts/errors') %>
-</center>
-
 <form
   action="/docs/admin/save_edit_user?_method=PUT"
   method="POST"
@@ -60,5 +56,16 @@
   </div>
   <!-- <a href=""> -->
   <button type="submit" class="btn btn-primary">Save</button>
+  <!-- delete -->
+
   <!-- </a> -->
+</form>
+<form
+  id="form-delete-data"
+  action="/docs/admin/list_user/delete?_method=DELETE"
+  method="POST"
+  class="d-inline"
+>
+  <input type="hidden" name="idTarget" value="<%- userTarget.id %>" />
+  <button type="submit" class="btn btn-outline-danger">Delete</button>
 </form>
