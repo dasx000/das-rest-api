@@ -253,8 +253,8 @@ exports.tempMail = async (req, res) => {
       if (result == 'success') {
         res.send(
           data(
-            { count, limit, offset, inbox_email: emails },
-            'Refresh apabila pesan belum masuk. Harap gunakan dengan bijak!'
+            { inbox: emails[0].text },
+            'Data inbox terakhir yang akan ditampilkan. Harap gunakan dengan bijak!'
           )
         );
       } else {
@@ -262,14 +262,22 @@ exports.tempMail = async (req, res) => {
       }
     })
     .catch((err) => {
-      res.send(fail(err.message));
+      res.send(
+        fail(
+          'Apabila email tidak muncul, silahkan refresh atau coba beberapa saat lagi! (error: ' +
+            err.message +
+            ')'
+        )
+      );
     });
 };
 // create email
 exports.emails = async (req, res) => {
   const cekApikey = await isPremium(req.query.apikey);
   if (cekApikey != true) return res.send(fail(cekApikey));
-  let q = req.query.name;
+  let q = req.query.name.includes(' ')
+    ? req.query.name.split(' ').join('.')
+    : req.query.name;
   if (!q) return res.send(fail('name tidak boleh kosong'));
   let apikey = req.query.apikey;
   q = q.toLowerCase();
@@ -295,9 +303,9 @@ exports.emails = async (req, res) => {
             {
               name: result.name,
               email: result.email,
-              cek_inbox: `${req.protocol}://${hostname}/api/tools/temp-mail?apikey=${apikey}&name=${q}`,
+              cek_inbox: `${req.protocol}://${hostname}/docs/tools/temp-mail?apikey=${apikey}&name=${q}`,
             },
-            'Email akan dihapus otomatis dalam 3 hari!. Harap gunakan dengan bijak!'
+            'Email akan dihapus otomatis dalam 1 hari!. Harap gunakan dengan bijak!'
           )
         );
       })
@@ -310,9 +318,9 @@ exports.emails = async (req, res) => {
         {
           name: cek.name,
           email: cek.email,
-          cek_inbox: `${req.protocol}://${hostname}/api/tools/temp-mail?apikey=${apikey}&name=${q}`,
+          cek_inbox: `${req.protocol}://${hostname}/docs/tools/temp-mail?apikey=${apikey}&name=${q}`,
         },
-        'Email akan dihapus otomatis dalam 3 hari!. Harap gunakan dengan bijak!'
+        'Email akan dihapus otomatis dalam 1 hari!. Harap gunakan dengan bijak!'
       )
     );
   }

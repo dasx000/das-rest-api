@@ -87,20 +87,9 @@ das.use(
 das.get('/', async function (req, res, next) {
   const visitor = await runVisitor();
   console.log(req.host);
-  res.json(req.host);
-});
-// res.json({ message: 'haii :)' });
-// das.get('/tes', async function (req, res) {
-//   res.render('tes', {
-//     title: 'TES',
-//     layout: 'layouts/main',
-//   });
-// Storing the records from the Visitor table
-// });
-
-das.get('/p', (req, res) => {
   res.render('index', { layout: false });
 });
+
 das.get('/docs', async (req, res) => {
   const visitor = await runVisitor();
   let getUser = await findAllUser();
