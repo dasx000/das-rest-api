@@ -63,31 +63,7 @@ exports.kbbiSearch2 = async (req, res) => {
       res.send(fail(err.message));
     });
 };
-exports.cariSekolah = async (req, res) => {
-  const cekApikey = await cekKey(req.query.apikey);
-  if (!cekApikey) return res.send(invalidKey());
-  const q = req.query.q;
-  if (!q) {
-    return res.send(fail('masukkan query!'));
-  }
 
-  await axios
-    .get(`https://api-sekolah-indonesia.herokuapp.com/sekolah/s?sekolah=${q}`)
-    .then((result) => {
-      res.send(
-        data(
-          {
-            data_sekolah: result.data.dataSekolah,
-            total: result.data.total_data,
-          },
-          `success. Thank to Alwan`
-        )
-      );
-    })
-    .catch((err) => {
-      res.send(fail(err.message));
-    });
-};
 exports.hargaKomoditas = async (req, res) => {
   const cekApikey = await cekKey(req.query.apikey);
   if (!cekApikey) return res.send(invalidKey());
@@ -101,19 +77,7 @@ exports.hargaKomoditas = async (req, res) => {
       res.send(fail(err.message));
     });
 };
-exports.lambangProvinsi = async (req, res) => {
-  const cekApikey = await cekKey(req.query.apikey);
-  if (!cekApikey) return res.send(invalidKey());
 
-  await axios
-    .get(`https://feriirawan-api.herokuapp.com/list/symbols/province/500`)
-    .then((result) => {
-      res.send(data(result.data.lambang, `success. creator:feriirawan`));
-    })
-    .catch((err) => {
-      res.send(fail(err.message));
-    });
-};
 exports.kodePost = async (req, res) => {
   const cekApikey = await cekKey(req.query.apikey);
   if (!cekApikey) return res.send(invalidKey());
