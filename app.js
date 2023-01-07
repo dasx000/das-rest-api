@@ -20,6 +20,8 @@ const {
   getRole,
   findAllUser,
   runVisitor,
+  runHits,
+  hits,
 } = require('./database/function');
 const authRouters = require('./app/routes/auth.route');
 const session = require('express-session');
@@ -82,7 +84,11 @@ das.use(
     limits: { fileSize: 10 * 1024 * 1024 },
   })
 );
-
+// =_=_=_ HITS COUNTER _=_=_=
+das.use(async (req, res, next) => {
+  await runHits();
+  next();
+});
 // res.json({ message: 'haii :)' });
 das.get('/', async function (req, res, next) {
   const visitor = await runVisitor();
@@ -92,11 +98,13 @@ das.get('/', async function (req, res, next) {
 
 das.get('/docs', async (req, res) => {
   const visitor = await runVisitor();
+  const hit = await hits();
+  console.log(hit);
   let getUser = await findAllUser();
   res.render('dashboard', {
     title: 'Dashboard',
     user: req.user,
-    utils: { visitor },
+    utils: { visitor, hit },
     users: getUser,
     layout: 'layouts/main',
   });

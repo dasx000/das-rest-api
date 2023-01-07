@@ -110,6 +110,35 @@ const runVisitor = async () => {
   }
 };
 
+// module run hits counter
+const runHits = async () => {
+  let hits = await Counters.findOne({ name: 'hits' });
+  if (hits == null) {
+    const beginHit = new Counters({
+      name: 'hits',
+      count: 1,
+    });
+
+    // save begin hit to database
+    beginHit.save();
+
+    return 1;
+  }
+
+  hits.count += 1;
+  hits.save();
+  return hits.count;
+};
+
+// module hits total
+const hits = async () => {
+  let result = await Counters.findOne({ name: 'hits' });
+  if (result === null) {
+    return 0;
+  } else {
+    return result.count;
+  }
+};
 // cekexpiredemail
 const checkExpiredEmail = async (collection) => {
   setInterval(async () => {
@@ -144,4 +173,6 @@ module.exports = {
   checkEmail,
   getApikey,
   isPremium,
+  runHits,
+  hits,
 };

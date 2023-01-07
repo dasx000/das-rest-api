@@ -4,6 +4,9 @@ const db = require('../models');
 const Users = db.users;
 const fs = require('fs');
 const { sleep } = require('../../lib/tools');
+const { getHashedPassword } = require('../../lib/function');
+
+// =_=_=_=_=_=_=_=_=_=_=_=_ modules =_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
 exports.uploadPhoto = async (req, res) => {
   const imgbbUploader = require('imgbb-uploader');
   let sampleFile;
@@ -89,4 +92,39 @@ exports.editProfile = async (req, res) => {
     console.log(err);
     res.redirect('/docs');
   }
+};
+
+// =_=_=_=_=_=_=_=_=_=_=_=_ Change Password _=_=_==_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
+exports.changePassword = async (req, res) => {
+  try {
+    res.render('user/password', {
+      title: 'Change Password',
+      user: req.user,
+      layout: 'layouts/main',
+    });
+  } catch (err) {
+    console.log(err);
+    res.redirect('/docs');
+  }
+};
+
+exports.savePassword = async (req, res) => {
+  const { id, current_pw, new_pw, confirm_pw } = req.body;
+  // check password
+  await Users.findById(id).then(async (user) => {
+    if (user.password != getHashedPassword(current_pw)) {
+      req.flash('error_msg', 'Current Password is wrong');
+      res.redirect('/docs/member/change_password');
+    } else if (new_pw != confirm_pw) {
+      req.flash('error_msg', 'New Password and Confirm Password is not same');
+      res.redirect('/docs/member/change_password');
+    } else {
+      await Users.findByIdAndUpdate(id, {
+        password: getHashedPassword(new_pw),
+      }).then((result) => {
+        req.flash('success_msg', 'Success update password');
+        res.redirect('/docs');
+      });
+    }
+  });
 };

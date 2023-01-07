@@ -55,6 +55,30 @@ $(document).ready(function () {
       }
     });
   });
+
+  // confirm button for change password
+  $('#form-change-password').on('submit', function (e) {
+    e.preventDefault(); // Stop normal form submitting
+    // Then include your code for showing the alert
+
+    Swal.fire({
+      title: 'Change Password?',
+      text: 'Is the password you entered correct?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, change it!',
+    }).then((res) => {
+      if (res.isConfirmed) {
+        document.querySelector('#form-change-password').submit();
+      }
+    });
+  });
+
+  // year in  footer
+  let year = new Date().getFullYear();
+  document.querySelector('#this-year').innerHTML = year;
 });
 // end off jquery
 
