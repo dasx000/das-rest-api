@@ -1,12 +1,3 @@
 {
-  "type": "service_account",
-  "project_id": "buoyant-imagery-328803",
-  "private_key_id": "fe81983256791c9e7a2676591e35392e36a0987e",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDLar9dzHk7ZjFn\nqx1u5ZFFP/MBowt421Me/41nz/djLsg4s6lpocBVXBsihUBa3vFrMXJqPz0Nxk6R\nQrxQ5NQKTC5xSpIHZ9hjRDCcmxhgmXm/ra90t7+u352Lkmnbm37C6bvKXxqfNgs4\nLU25icBEGk0ZQanNNx3J0n3J+FbWVALPY8xpotdbR+lqbsiN9O5/gWx5FBJDP08R\nJUPGYiXEOQA5EWWXI9rfMI7ojqRX5goMF0YEurQBYsKW0sRR4nz5DX1tCX+36iYf\nF21POXTu9vO9Yi8aFPotv5kqvXSaiJoIpvzW8JcMWAwDaPxZc3E+wNQXGTSEhieu\n9o6encBFAgMBAAECggEACoppiC7ESXOuM7UGPWzf7jq2GOud+JFE6WJMrYh1RUpz\nTZzhtnuPP90Z+tv0zcCnuepCB4dnXoNcJuLSZ060PiRcc7ptfry+1cX+zt6qkLbj\nPC9/3Ah5glJME6NuoNaZ5ve9p2ruMjnWsv6F/ItKzzydqiVg6yVkAcVKh2C6/zgb\nhh5Bxsr3c5lt1luNCTy15HB42i7EisHEWanBecXPNgKBJH5YTkH4Ovgiqlm9qZSn\nqVXkdWZlIRzhlOcDWBByMdAvkX7KQ+ngVda81EsGnQ+vuOfBMvVo4EGZgnOezWiM\nxfM1xR0hfz26an8+KtzazmfdU7t/HWiGtnLvkfCbsQKBgQD1wwTj0JRsYpQiKjRT\nRuxeX6s0yn8o0gJ3lkye49I77cymt6UyUGmwXZqTcHSrFoTlJl33c3qw84GRpTWD\ndUp8UxLqbM5oAomeSopzptmWTti92FUL1baOwBTodjK5PqnIZQUS5IyGP/in2Qv7\nZ2csDVfrsYiEmE8EhLBREfymVwKBgQDT5CIB2OzHWSA4pIiZtA5bkj2Lm+pXYuRC\nQ88PXG9GHqlSpVfv/UiaTbHmxxJvNIpcOqN2Hw5ewb4CrNIAtIGE2amo4s301B9h\njqpS++jY48oGNUxM+bGnm+p7VJHfxD+/W96K8KogJfxdNpnc55Fr2EG6mCkMH4Cz\nrQPAWQ3UwwKBgGkCqn05a6IgQRGUHQWUYX01va7x84GasqkslJKz3+nxgyedgr3L\n9E0CwgDL5V4RYjmTukT4l+0yLyPvhr0kCe6zhHqcgVmZ8/mp+hzOp1x9VklQPY6w\nA7BdTNHDZ4sVxnA1EgTvmUfn37TAnkkO9tuw2+d+1Ulq1yCkHb6WQ/FDAoGADFdI\nJ8VjnQSy3Lmwfws+ntS4ou30yxwmYTmj0Kg4juPwRrD8myysUthdmSxVBYcQ2+hK\nZvHOG3S7RVqdbI8W0A8BU6XKCw1juoHdp7GmUSOLO6tVA1KzpyhskrxNNrQuZk3K\ne1si/XZY6XDpqzUNgjN5OI3uLheTnmNgSY6mQJMCgYBd+awRADLAlGYrUis3+Pz8\nE02S9QpqefkbIT6MafzCatKjo2VZ3cg/bmEVvlSsdrSp1x6iRf3/nSIDnSpm+OMQ\nnHF0FjtENnXw25/D83gF28NggEqXVNBLPwelKFs5wptYLMchqwh7zFBEIBsHbZri\nIa8KONUZ61QDFs63zoGycQ==\n-----END PRIVATE KEY-----\n",
-  "client_email": "nodejs@buoyant-imagery-328803.iam.gserviceaccount.com",
-  "client_id": "108992586294327735608",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nodejs%40buoyant-imagery-328803.iam.gserviceaccount.com"
+  "INFOMATION": "PLEASE CREATE KEY GOOGLE DRIVE API"
 }

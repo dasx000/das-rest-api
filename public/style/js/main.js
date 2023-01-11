@@ -1,3 +1,4 @@
+// jquery
 $(document).ready(function () {
   // flash message
 

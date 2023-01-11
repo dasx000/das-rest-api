@@ -1,3 +1,4 @@
+// =_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_ START MODULES _=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
 const express = require('express');
 const fs = require('fs');
 const das = express();
@@ -9,7 +10,6 @@ const connectMongoDb = require('./database/connect');
 const methodOverride = require('method-override');
 const fileUpload = require('express-fileupload');
 const db = require('./app/models/');
-// OTENTIKASI USER
 const passport = require('passport');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
@@ -25,52 +25,54 @@ const {
 } = require('./database/function');
 const authRouters = require('./app/routes/auth.route');
 const session = require('express-session');
-const expressVisitorCounter = require('express-visitor-counter');
 const MemoryStore = require('memorystore')(session);
 const compression = require('compression');
-// END OTENTIKASI USER
-// == OTENTIFIKASI USER ==
+// =_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_ END MODULES _=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
+
+const dbConnection = connectMongoDb(); //  connect to mongodb
+
 das.set('trust proxy', 1);
-// connect to database mongodb
-const dbConnection = connectMongoDb();
-das.use(compression());
-das.set('view engine', 'ejs');
+
+das.use(compression()); // middleware untuk kompresi data
+das.set('view engine', 'ejs'); // middleware untuk menerapkan view engine ejs
+
 das.use(expressLayout);
 das.use(express.static('public'));
-das.use(express.json());
-das.use(express.urlencoded({ extended: true }));
-das.use(cors());
+//das.use(express.json()); // mengambil request type json kemudian mengubah menjadi object
+//das.use(express.urlencoded({ extended: true })); // mengambil request type application/x-www-form-urlencoded kemudian mengubah menjadi object
+das.use(cors()); // mengizinkan app lain untuk mengakses sumber daya
 ///////////db ////////////
 let form = JSON.parse(fs.readFileSync('form.json', 'utf-8'));
 ///////////////////
 das.use(
   bodyParser.json({
+    // mengambil request type json kemudian mengubah menjadi object
     extended: true,
     limit: '50mb',
   })
 );
-das.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+das.use(bodyParser.urlencoded({ limit: '50mb', extended: true })); // mengambil request type application/x-www-form-urlencoded kemudian mengubah menjadi object
 
 das.use(
   session({
-    secret: 'secret',
-    resave: true,
+    secret: 'secret', //menunjukkan string rahasia yang digunakan untuk mengenkripsi sesi pengguna.
+    resave: true, //menunjukkan bahwa sesi pengguna harus disimpan kembali ke penyimpanan sesi setiap kali ada perubahan, meskipun tidak ada perubahan data sesi.
     saveUninitialized: true,
-    cookie: { maxAge: 864000000 },
+    cookie: { maxAge: 864000000 }, // waktu expired cookie
     store: new MemoryStore({
       checkPeriod: 864000000,
     }),
   })
 );
 
-das.use(cookieParser());
+das.use(cookieParser()); //Middleware cookie-parser adalah sebuah komponen yang akan memproses cookie yang dikirimkan dalam permintaan ke server.
 
-das.use(passport.initialize());
-das.use(passport.session());
-require('./lib/config')(passport);
+das.use(passport.initialize()); //P assport adalah sebuah pustaka yang memudahkan pengelolaan otentikasi pengguna dalam aplikasi web dengan menyediakan sekumpulan strategi otentikasi yang dapat digunakan. Salah satu strategi yang paling populer adalah otentikasi menggunakan login dan password. Namun, Passport juga menyediakan strategi otentikasi lainnya seperti otentikasi menggunakan layanan seperti Facebook, Google, atau Twitter.
+das.use(passport.session()); //Middleware passport.session() akan mengelola sesi otentikasi pengguna dalam aplikasi web. Setelah pengguna terotentikasi, informasi otentikasi pengguna akan disimpan dalam sesi dan akan tersedia untuk seluruh permintaan selama sesi tersebut masih aktif
+require('./lib/config')(passport); // mengirimkan argument passport ke file config.js
 
-das.use(flash());
-das.use(methodOverride('_method'));
+das.use(flash()); // Middleware flash adalah sebuah komponen yang akan memungkinkan Anda untuk menyimpan pesan sementara dalam aplikasi web
+das.use(methodOverride('_method')); //Middleware method-override adalah sebuah komponen yang akan memungkinkan Anda untuk mengubah metode HTTP yang digunakan dalam permintaan ke server.
 
 das.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
@@ -84,16 +86,17 @@ das.use(
     limits: { fileSize: 10 * 1024 * 1024 },
   })
 );
-// =_=_=_ HITS COUNTER _=_=_=
+// =_=_=_=_=_=_=_=_=_=_=_=_ HITS COUNTER _=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
 das.use(async (req, res, next) => {
   await runHits();
   next();
 });
-// res.json({ message: 'haii :)' });
+
 das.get('/', async function (req, res, next) {
   const visitor = await runVisitor();
-  console.log(req.host);
+  console.log(req.hostname);
   res.render('index', { layout: false });
+  console.log(res.locals);
 });
 
 das.get('/docs', async (req, res) => {
@@ -110,29 +113,7 @@ das.get('/docs', async (req, res) => {
   });
 });
 
-// request google form
-das.get('/google_form1', async (req, res) => {
-  const nama = req.query.nama;
-  const npm = req.query.npm;
-  const wa = req.query.wa;
-  console.log(nama);
-  if (nama == undefined) return res.json({ message: 'data tidak lengkap' });
-  form.push({ nama: nama, npm: npm, wa: wa });
-  fs.writeFileSync('form.json', JSON.stringify(form));
-  res.json(form);
-});
-das.get('/data_form1', async (req, res) => {
-  res.json(form);
-  // fs.writeFileSync('form.json', JSON.stringify(form));
-});
-das.get('/hapus/data_form1', async (req, res) => {
-  const id = req.query.id;
-  form.splice(0, 1);
-  fs.writeFileSync('form.json', JSON.stringify(form));
-  res.json(form);
-});
-
-// menghubungkan router
+// =_=_=_=_=_=_=_=_=_=_=_=_ ROUTER _=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
 require('./app/routes/tool.route')(das);
 require('./app/routes/student.route')(das);
 require('./app/routes/islam.route')(das);
@@ -145,14 +126,14 @@ require('./app/routes/information.route')(das);
 require('./app/routes/downloader.route')(das);
 das.use('/auth', authRouters);
 
-// LISTEN
-
+// =_=_=_=_=_=_=_=_=_=_=_=_ 404 _=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
 das.use((req, res, next) => {
   res.status(404).render('error-404', {
     layout: false,
   });
 });
 
+// =_=_=_=_=_=_=_=_=_=_=_=_ RUNNING _=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_=_
 das.listen(port, () => {
   console.log(`Server started on PORT ${port}`);
 });
