@@ -292,7 +292,7 @@ exports.emails = async (req, res) => {
   if (cek == null) {
     const newEmail = new db.emails({
       name: q,
-      email: `i2v6m.${q}@inbox.testmail.app`,
+      email: `${config.namespaceTestmail}.${q}@inbox.testmail.app`,
       expired: Date.now() + ms('3d'),
     });
     newEmail
